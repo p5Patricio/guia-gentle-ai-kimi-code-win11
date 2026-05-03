@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gentle-AI + Kimi Code — Windows 11 Nativo</title>
+<link rel="icon" type="image/svg+xml" href="LogoDark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
@@ -804,57 +805,132 @@
         padding: 0 18px;
       }
     }
-  </style>
+  
+  /* Language switcher */
+  .lang-switch {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 0;
+    background: var(--bg-card, #12121a);
+    border: 1px solid var(--border, #2a2a3d);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.82em;
+    font-weight: 600;
+  }
+  .lang-switch button {
+    background: transparent;
+    border: none;
+    color: var(--text-dim, #8888a0);
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: inherit;
+    transition: all 0.2s;
+  }
+  .lang-switch button:hover { color: var(--text-bright, #f0f0ff); }
+  .lang-switch button.active { background: var(--accent-blue, #6ea8fe); color: #0a0a0f; }
+
+  [data-lang="en"] { display: none; }
+  html[lang="en"] [data-lang="es"] { display: none; }
+  html[lang="en"] [data-lang="en"] { display: inline; }
+  html[lang="en"] [data-lang="en"].block, html[lang="en"] div[data-lang="en"], html[lang="en"] p[data-lang="en"], html[lang="en"] h1[data-lang="en"], html[lang="en"] h2[data-lang="en"], html[lang="en"] h3[data-lang="en"], html[lang="en"] li[data-lang="en"] { display: block; }
+  html[lang="en"] [data-lang="en"].flex { display: flex; }
+  html[lang="en"] [data-lang="es"] { display: none !important; }
+</style>
   <base target="_blank">
 </head>
 
 <body>
+<!-- Language Switcher -->
+<div class="lang-switch">
+  <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-grid"></div>
-    <div class="eyebrow">// Guía Completa — Windows 11 Nativo · Abril 2026</div>
-    <h1><span class="grad">Kimi Code</span> + <span class="grad2">Gentle-AI</span></h1>
-    <p class="desc">Instalación nativa en Windows 11. El agente de coding de Moonshot AI potenciado con el ecosistema
-      Gentleman: memoria persistente, workflow SDD, skills, MCP y code review automático.</p>
-    <div class="badges">
-      <div class="badge b1">⊞ Windows 11 Nativo</div>
-      <div class="badge b1">Kimi Code CLI</div>
-      <div class="badge b2">gentle-ai · soporte nativo</div>
-      <div class="badge b3">256K contexto · K2.6</div>
-      <div class="badge b4">Python 3.13 · uv</div>
+    <div data-lang="es">
+      <div class="eyebrow">// Guía Completa — Windows 11 Nativo · Abril 2026</div>
+      <h1><span class="grad">Kimi Code</span> + <span class="grad2">Gentle-AI</span></h1>
+      <p class="desc">Instalación nativa en Windows 11. El agente de coding de Moonshot AI potenciado con el ecosistema
+        Gentleman: memoria persistente, workflow SDD, skills, MCP y code review automático.</p>
+      <div class="badges">
+        <div class="badge b1">⊞ Windows 11 Nativo</div>
+        <div class="badge b1">Kimi Code CLI</div>
+        <div class="badge b2">gentle-ai · soporte nativo</div>
+        <div class="badge b3">256K contexto · K2.6</div>
+        <div class="badge b4">Python 3.13 · uv</div>
+      </div>
+    </div>
+    <div data-lang="en">
+      <div class="eyebrow">// Complete Guide — Native Windows 11 · April 2026</div>
+      <h1><span class="grad">Kimi Code</span> + <span class="grad2">Gentle-AI</span></h1>
+      <p class="desc">Native installation on Windows 11. The Moonshot AI coding agent powered by the Gentleman
+        ecosystem: persistent memory, SDD workflow, skills, MCP, and automatic code review.</p>
+      <div class="badges">
+        <div class="badge b1">⊞ Native Windows 11</div>
+        <div class="badge b1">Kimi Code CLI</div>
+        <div class="badge b2">gentle-ai · native support</div>
+        <div class="badge b3">256K context · K2.6</div>
+        <div class="badge b4">Python 3.13 · uv</div>
+      </div>
     </div>
   </section>
 
   <!-- UPDATE BANNER -->
   <div class="update-bar">
     <div class="dot"></div>
-    <span>Nuevo:</span>
+    <span data-lang="es">Nuevo:</span><span data-lang="en">New:</span>
     <span style="color:var(--mut2)">Kimi CLI 1.39.0 · gentle-ai v1.23.0 · 256K tokens · Installer PowerShell · Scoop ·
       Go install</span>
   </div>
 
   <!-- COMUNIDAD -->
   <div style="background: linear-gradient(90deg, rgba(0,196,184,.08), rgba(249,115,22,.06)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 40px; text-align: center;">
-    <p style="font-size: .82em; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">🙌 Guía gratuita y open-source para la comunidad</p>
-    <p style="font-size: .95em; color: var(--text); max-width: 700px; margin: 0 auto;">Esta guía fue creada para ayudar a desarrolladores hispanohablantes a dominar Kimi Code con el ecosistema Gentleman. Si te sirvió, compartila en tus redes o dejá una ⭐ en el <a href="https://github.com/p5Patricio/guia-gentle-ai-kimi-code-win11" style="color: var(--kimi); text-decoration: underline;">repo de GitHub</a>.</p>
+    <div data-lang="es">
+      <p style="font-size: .82em; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">🙌 Guía gratuita y open-source para la comunidad</p>
+      <p style="font-size: .95em; color: var(--text); max-width: 700px; margin: 0 auto;">Esta guía fue creada para ayudar a desarrolladores hispanohablantes a dominar Kimi Code con el ecosistema Gentleman. Si te sirvió, compartila en tus redes o dejá una ⭐ en el <a href="https://github.com/p5Patricio/guia-gentle-ai-kimi-code-win11" style="color: var(--kimi); text-decoration: underline;">repo de GitHub</a>.</p>
+    </div>
+    <div data-lang="en">
+      <p style="font-size: .82em; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">🙌 Free and open-source guide for the community</p>
+      <p style="font-size: .95em; color: var(--text); max-width: 700px; margin: 0 auto;">This guide was created to help Spanish-speaking developers master Kimi Code with the Gentleman ecosystem. If you found it useful, share it on social media or leave a ⭐ on the <a href="https://github.com/p5Patricio/guia-gentle-ai-kimi-code-win11" style="color: var(--kimi); text-decoration: underline;">GitHub repo</a>.</p>
+    </div>
   </div>
 
   <!-- WHAT IS -->
   <div class="two-cards">
     <div class="card ca">
       <div class="lbl">// Kimi Code CLI</div>
-      <h2>Agente de coding de Moonshot AI</h2>
-      <p>Corre directo en tu terminal (PowerShell). Lee tu codebase, edita archivos, ejecuta comandos, busca en la web y
-        entiende el proyecto completo via lenguaje natural. Powered by <strong>Kimi K2.6</strong> con 256K tokens de
-        contexto, soporte MCP, modo thinking con Tab, y modo shell con Ctrl-X.</p>
+      <h2 data-lang="es">Agente de coding de Moonshot AI</h2><h2 data-lang="en">Moonshot AI Coding Agent</h2>
+      <div data-lang="es">
+        <p>Corre directo en tu terminal (PowerShell). Lee tu codebase, edita archivos, ejecuta comandos, busca en la web y
+          entiende el proyecto completo via lenguaje natural. Powered by <strong>Kimi K2.6</strong> con 256K tokens de
+          contexto, soporte MCP, modo thinking con Tab, y modo shell con Ctrl-X.</p>
+      </div>
+      <div data-lang="en">
+        <p>Runs directly in your terminal (PowerShell). Reads your codebase, edits files, executes commands, searches the web, and
+          understands the full project via natural language. Powered by <strong>Kimi K2.6</strong> with 256K context tokens,
+          MCP support, thinking mode with Tab, and shell mode with Ctrl-X.</p>
+      </div>
     </div>
     <div class="card cb">
       <div class="lbl">// Gentle-AI</div>
-      <h2>Configurador del ecosistema Gentleman</h2>
-      <p>No instala Kimi Code — lo superpotencia. Un binario de Go que inyecta memoria persistente (Engram), workflow
-        SDD de 9 fases, 21 skills de código moderno, docs en tiempo real (Context7), code review automático (GGA) y
-        persona mentora. <strong>Soporta Kimi Code de forma nativa</strong> con detección automática.</p>
+      <h2 data-lang="es">Configurador del ecosistema Gentleman</h2><h2 data-lang="en">Gentleman Ecosystem Configurator</h2>
+      <div data-lang="es">
+        <p>No instala Kimi Code — lo superpotencia. Un binario de Go que inyecta memoria persistente (Engram), workflow
+          SDD de 9 fases, 21 skills de código moderno, docs en tiempo real (Context7), code review automático (GGA) y
+          persona mentora. <strong>Soporta Kimi Code de forma nativa</strong> con detección automática.</p>
+      </div>
+      <div data-lang="en">
+        <p>Does not install Kimi Code — it supercharges it. A Go binary that injects persistent memory (Engram), a 9-phase
+          SDD workflow, 21 modern code skills, real-time docs (Context7), automatic code review (GGA), and a mentor
+          persona. <strong>Native Kimi Code support</strong> with automatic detection.</p>
+      </div>
     </div>
   </div>
 
@@ -862,91 +938,152 @@
 
     <!-- ARCH DIAGRAM -->
     <div style="padding:56px 0 0;">
-      <div
+      <div data-lang="es"
         style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">
         // stack completo en Windows 11</div>
+      <div data-lang="en"
+        style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">
+        // full stack on Windows 11</div>
       <div class="arch">
-        <span class="a1">Kimi Code CLI</span> (nativo en Windows · PowerShell · kimi K2.6 · 256K contexto)
-        │
-        ├── <span class="a3">Engram</span> Memoria persistente · SQLite + FTS5 · ~/.engram/engram.db
-        ├── <span class="a2">SDD</span> Spec-Driven Dev · 9 fases · explore→propose→spec→apply→archive
-        ├── <span class="a4">Context7</span> MCP server · docs de librerías en tiempo real
-        ├── <span class="a5">Skills</span> 21 patrones · React 19, Next.js 15, TypeScript, Tailwind 4
-        └── <span class="a1">GGA</span> Guardian Angel · code review automático en cada commit
+        <div data-lang="es">
+          <span class="a1">Kimi Code CLI</span> (nativo en Windows · PowerShell · kimi K2.6 · 256K contexto)
+          │
+          ├── <span class="a3">Engram</span> Memoria persistente · SQLite + FTS5 · ~/.engram/engram.db
+          ├── <span class="a2">SDD</span> Spec-Driven Dev · 9 fases · explore→propose→spec→apply→archive
+          ├── <span class="a4">Context7</span> MCP server · docs de librerías en tiempo real
+          ├── <span class="a5">Skills</span> 21 patrones · React 19, Next.js 15, TypeScript, Tailwind 4
+          └── <span class="a1">GGA</span> Guardian Angel · code review automático en cada commit
 
-        <span style="color:var(--border)">──────────────────────────────────────────────────────</span>
-        <span style="color:var(--muted)">Requisitos: Python 3.13+ (via uv, auto-instalado) · Go 1.24+ (para gentle-ai go
-          install)</span>
-        <span style="color:var(--muted)">Sin Node.js · Sin WSL2 · Sin Docker · Kimi CLI detectado automáticamente por
-          gentle-ai</span>
+          <span style="color:var(--border)">──────────────────────────────────────────────────────</span>
+          <span style="color:var(--muted)">Requisitos: Python 3.13+ (via uv, auto-instalado) · Go 1.24+ (para gentle-ai go
+            install)</span>
+          <span style="color:var(--muted)">Sin Node.js · Sin WSL2 · Sin Docker · Kimi CLI detectado automáticamente por
+            gentle-ai</span>
+        </div>
+        <div data-lang="en">
+          <span class="a1">Kimi Code CLI</span> (native on Windows · PowerShell · kimi K2.6 · 256K context)
+          │
+          ├── <span class="a3">Engram</span> Persistent memory · SQLite + FTS5 · ~/.engram/engram.db
+          ├── <span class="a2">SDD</span> Spec-Driven Dev · 9 phases · explore→propose→spec→apply→archive
+          ├── <span class="a4">Context7</span> MCP server · real-time library docs
+          ├── <span class="a5">Skills</span> 21 patterns · React 19, Next.js 15, TypeScript, Tailwind 4
+          └── <span class="a1">GGA</span> Guardian Angel · automatic code review on every commit
+
+          <span style="color:var(--border)">──────────────────────────────────────────────────────</span>
+          <span style="color:var(--muted)">Requirements: Python 3.13+ (via uv, auto-installed) · Go 1.24+ (for gentle-ai go
+            install)</span>
+          <span style="color:var(--muted)">No Node.js · No WSL2 · No Docker · Kimi CLI auto-detected by
+            gentle-ai</span>
+        </div>
       </div>
     </div>
 
     <!-- ═══ VENTAJAS ═══ -->
     <div class="ph">
       <div class="div"></div><br><br>
-      <div
+      <div data-lang="es"
         style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;">
         // por qué usar estas dos herramientas juntas</div>
-      <div style="font-family:'Syne',sans-serif;font-size:1.6em;font-weight:800;margin-bottom:8px;">Ventajas de la
+      <div data-lang="en"
+        style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;">
+        // why use these two tools together</div>
+      <div data-lang="es" style="font-family:'Syne',sans-serif;font-size:1.6em;font-weight:800;margin-bottom:8px;">Ventajas de la
         combinación</div>
-      <p style="color:var(--mut2);max-width:700px;margin-bottom:32px;font-weight:300;">Kimi Code por sí solo es un
-        agente de coding capaz con 256K contexto. Gentle-AI lo transforma en un sistema de desarrollo completo con
-        memoria, estructura y criterio propio.</p>
+      <div data-lang="en" style="font-family:'Syne',sans-serif;font-size:1.6em;font-weight:800;margin-bottom:8px;">Advantages of the
+        combination</div>
+      <div data-lang="es">
+        <p style="color:var(--mut2);max-width:700px;margin-bottom:32px;font-weight:300;">Kimi Code por sí solo es un
+          agente de coding capaz con 256K contexto. Gentle-AI lo transforma en un sistema de desarrollo completo con
+          memoria, estructura y criterio propio.</p>
+      </div>
+      <div data-lang="en">
+        <p style="color:var(--mut2);max-width:700px;margin-bottom:32px;font-weight:300;">Kimi Code alone is a capable
+          coding agent with 256K context. Gentle-AI transforms it into a complete development system with
+          memory, structure, and its own judgment.</p>
+      </div>
 
       <div class="adv-grid">
         <div class="adv-card">
           <div class="adv-icon">🧠</div>
-          <div class="adv-title">Kimi K2.6 — 256K de contexto</div>
-          <div class="adv-desc">El modelo comprende proyectos enteros: estructura, dependencias, patrones y cómo se
+          <div data-lang="es" class="adv-title">Kimi K2.6 — 256K de contexto</div>
+          <div data-lang="en" class="adv-title">Kimi K2.6 — 256K context</div>
+          <div data-lang="es" class="adv-desc">El modelo comprende proyectos enteros: estructura, dependencias, patrones y cómo se
             conecta todo. Ideal para refactors multi-archivo, debugging complejo y cambios de arquitectura sin perder
             contexto.</div>
+          <div data-lang="en" class="adv-desc">The model understands entire projects: structure, dependencies, patterns, and how
+            everything connects. Ideal for multi-file refactors, complex debugging, and architecture changes without losing
+            context.</div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">💾</div>
-          <div class="adv-title">Engram — Memoria entre sesiones</div>
-          <div class="adv-desc">Kimi Code no recuerda nada entre sesiones. Engram persiste decisiones, bugs, patrones y
+          <div data-lang="es" class="adv-title">Engram — Memoria entre sesiones</div>
+          <div data-lang="en" class="adv-title">Engram — Memory across sessions</div>
+          <div data-lang="es" class="adv-desc">Kimi Code no recuerda nada entre sesiones. Engram persiste decisiones, bugs, patrones y
             contexto de proyecto en SQLite. Al volver, el agente ya conoce todo el historial sin que repitas nada.</div>
+          <div data-lang="en" class="adv-desc">Kimi Code remembers nothing between sessions. Engram persists decisions, bugs, patterns, and
+            project context in SQLite. When you return, the agent already knows the entire history without you repeating anything.</div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">⚡</div>
-          <div class="adv-title">Hasta 100 tokens/s — Respuesta ultra-rápida</div>
-          <div class="adv-desc">Kimi Code tiene uno de los throughputs más altos del mercado. Combinado con el workflow
+          <div data-lang="es" class="adv-title">Hasta 100 tokens/s — Respuesta ultra-rápida</div>
+          <div data-lang="en" class="adv-title">Up to 100 tokens/s — Ultra-fast response</div>
+          <div data-lang="es" class="adv-desc">Kimi Code tiene uno de los throughputs más altos del mercado. Combinado con el workflow
             SDD de gentle-ai, los ciclos de desarrollo se vuelven significativamente más rápidos que con otros agentes.
+          </div>
+          <div data-lang="en" class="adv-desc">Kimi Code has one of the highest throughputs on the market. Combined with the gentle-ai
+            SDD workflow, development cycles become significantly faster than with other agents.
           </div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">🏗️</div>
-          <div class="adv-title">SDD — Desarrollo guiado por spec</div>
-          <div class="adv-desc">El workflow Spec-Driven Development de 9 fases convierte a Kimi Code de un chatbot que
+          <div data-lang="es" class="adv-title">SDD — Desarrollo guiado por spec</div>
+          <div data-lang="en" class="adv-title">SDD — Spec-Driven Development</div>
+          <div data-lang="es" class="adv-desc">El workflow Spec-Driven Development de 9 fases convierte a Kimi Code de un chatbot que
             escribe código en un agente que propone, diseña, implementa y verifica con un proceso estructurado y
             repetible.</div>
+          <div data-lang="en" class="adv-desc">The 9-phase Spec-Driven Development workflow turns Kimi Code from a chatbot that
+            writes code into an agent that proposes, designs, implements, and verifies with a structured and
+            repeatable process.</div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">📚</div>
-          <div class="adv-title">Context7 — Documentación en tiempo real</div>
-          <div class="adv-desc">Kimi K2.6 fue entrenado hasta cierta fecha. Context7 via MCP le da acceso a la
+          <div data-lang="es" class="adv-title">Context7 — Documentación en tiempo real</div>
+          <div data-lang="en" class="adv-title">Context7 — Real-time documentation</div>
+          <div data-lang="es" class="adv-desc">Kimi K2.6 fue entrenado hasta cierta fecha. Context7 via MCP le da acceso a la
             documentación actualizada de librerías como Next.js 15, React 19, Tailwind 4 o cualquier framework que uses.
+          </div>
+          <div data-lang="en" class="adv-desc">Kimi K2.6 was trained up to a certain date. Context7 via MCP gives it access to
+            updated documentation for libraries like Next.js 15, React 19, Tailwind 4, or any framework you use.
           </div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">🔍</div>
-          <div class="adv-title">GGA — Code review automático</div>
-          <div class="adv-desc">El Guardian Angel de gentle-ai ejecuta un code review con Kimi Code en cada git commit.
+          <div data-lang="es" class="adv-title">GGA — Code review automático</div>
+          <div data-lang="en" class="adv-title">GGA — Automatic code review</div>
+          <div data-lang="es" class="adv-desc">El Guardian Angel de gentle-ai ejecuta un code review con Kimi Code en cada git commit.
             Detecta errores, malas prácticas y sugiere mejoras antes de que lleguen al repositorio.</div>
+          <div data-lang="en" class="adv-desc">The gentle-ai Guardian Angel runs a code review with Kimi Code on every git commit.
+            Detects errors, bad practices, and suggests improvements before they reach the repository.</div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">🎯</div>
-          <div class="adv-title">Modo Thinking — Razonamiento profundo</div>
-          <div class="adv-desc">Inicia Kimi con <code>--thinking</code> para activar el modo thinking. Ideal para
+          <div data-lang="es" class="adv-title">Modo Thinking — Razonamiento profundo</div>
+          <div data-lang="en" class="adv-title">Thinking Mode — Deep reasoning</div>
+          <div data-lang="es" class="adv-desc">Inicia Kimi con <code>--thinking</code> para activar el modo thinking. Ideal para
             decisiones de arquitectura complejas, debugging difícil o planificar refactors grandes. Kimi razona antes de
             responder. Se desactiva con <code>--no-thinking</code>.</div>
+          <div data-lang="en" class="adv-desc">Start Kimi with <code>--thinking</code> to activate thinking mode. Ideal for
+            complex architecture decisions, difficult debugging, or planning large refactors. Kimi reasons before
+            responding. Disable with <code>--no-thinking</code>.</div>
         </div>
         <div class="adv-card">
           <div class="adv-icon">💰</div>
-          <div class="adv-title">Costo — Membership con quota semanal</div>
-          <div class="adv-desc">Kimi Code usa un modelo de membership (no pay-per-token). La cuota se renueva cada 7
+          <div data-lang="es" class="adv-title">Costo — Membership con quota semanal</div>
+          <div data-lang="en" class="adv-title">Cost — Membership with weekly quota</div>
+          <div data-lang="es" class="adv-desc">Kimi Code usa un modelo de membership (no pay-per-token). La cuota se renueva cada 7
             días. Con gentle-ai optimizando el contexto y la memoria, cada token del modelo rinde mucho más.</div>
+          <div data-lang="en" class="adv-desc">Kimi Code uses a membership model (not pay-per-token). The quota renews every 7
+            days. With gentle-ai optimizing context and memory, every model token goes much further.</div>
         </div>
       </div>
     </div>
@@ -958,30 +1095,44 @@
         <div class="ph-num"
           style="background:linear-gradient(135deg,#0ea5e9,#0891b2);box-shadow:0 0 30px rgba(14,165,233,.25)">0</div>
         <div>
-          <div class="ph-t">Prerequisitos — qué necesitas instalar primero</div>
-          <div class="ph-s">Cuenta Kimi + uv (Python package manager) · Go 1.24 opcional para gentle-ai</div>
+          <div data-lang="es" class="ph-t">Prerequisitos — qué necesitas instalar primero</div>
+          <div data-lang="en" class="ph-t">Prerequisites — what you need to install first</div>
+          <div data-lang="es" class="ph-s">Cuenta Kimi + uv (Python package manager) · Go 1.24 opcional para gentle-ai</div>
+          <div data-lang="en" class="ph-s">Kimi account + uv (Python package manager) · Go 1.24 optional for gentle-ai</div>
         </div>
       </div>
 
       <div class="alert ai">
         <div>ℹ️</div>
         <div class="ab">
-          <div class="t">Requisitos reales para Windows 11</div>
-          <p><strong>Kimi Code CLI</strong>: requiere Python 3.13+ administrado por <code>uv</code>. El installer
-            oficial instala <code>uv</code> automáticamente si no lo tienes.</p>
-          <p><strong>Gentle-AI</strong>: binario de Go autocontenido. Con el installer PowerShell no necesitas Go. Con
-            <code>go install</code> sí necesitas Go 1.24+.</p>
-          <p><strong>Cuenta Kimi</strong>: requiere membresía activa de Kimi (plan con acceso a Kimi Code). Sin esto, el
-            login no funcionará.</p>
+          <div data-lang="es" class="t">Requisitos reales para Windows 11</div>
+          <div data-lang="en" class="t">Real requirements for Windows 11</div>
+          <div data-lang="es">
+            <p><strong>Kimi Code CLI</strong>: requiere Python 3.13+ administrado por <code>uv</code>. El installer
+              oficial instala <code>uv</code> automáticamente si no lo tienes.</p>
+            <p><strong>Gentle-AI</strong>: binario de Go autocontenido. Con el installer PowerShell no necesitas Go. Con
+              <code>go install</code> sí necesitas Go 1.24+.</p>
+            <p><strong>Cuenta Kimi</strong>: requiere membresía activa de Kimi (plan con acceso a Kimi Code). Sin esto, el
+              login no funcionará.</p>
+          </div>
+          <div data-lang="en">
+            <p><strong>Kimi Code CLI</strong>: requires Python 3.13+ managed by <code>uv</code>. The official
+              installer installs <code>uv</code> automatically if you don't have it.</p>
+            <p><strong>Gentle-AI</strong>: self-contained Go binary. With the PowerShell installer you don't need Go. With
+              <code>go install</code> you do need Go 1.24+.</p>
+            <p><strong>Kimi account</strong>: requires an active Kimi membership (plan with Kimi Code access). Without it,
+              login will not work.</p>
+          </div>
         </div>
       </div>
 
-      <h3>Paso 1 — Verificar / instalar PowerShell 7</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dps"></div>PowerShell 7 — recomendado
-        </div>
-        <pre><span class="c"># Instalar PowerShell 7 vía winget si no lo tienes</span>
+      <div data-lang="es">
+        <h3>Paso 1 — Verificar / instalar PowerShell 7</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — recomendado
+          </div>
+          <pre><span class="c"># Instalar PowerShell 7 vía winget si no lo tienes</span>
 <span class="k">winget</span> install --id Microsoft.PowerShell -e
 
 <span class="c"># Verificar versión</span>
@@ -989,11 +1140,29 @@
 
 <span class="c"># Abrir siempre desde Windows Terminal (instalar desde Microsoft Store si no lo tienes)</span>
 <span class="c"># Buscá "Windows Terminal" en la tienda de Microsoft</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Step 1 — Verify / Install PowerShell 7</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — recommended
+          </div>
+          <pre><span class="c"># Install PowerShell 7 via winget if you don't have it</span>
+<span class="k">winget</span> install --id Microsoft.PowerShell -e
+
+<span class="c"># Verify version</span>
+<span class="k">$PSVersionTable</span>.PSVersion   <span class="c"># must be 7.x.x</span>
+
+<span class="c"># Always open from Windows Terminal (install from Microsoft Store if you don't have it)</span>
+<span class="c"># Search "Windows Terminal" in the Microsoft Store</span></pre>
+        </div>
       </div>
 
-      <h3>Paso 2 — Cuenta Kimi y membresía activa</h3>
-      <div class="step">
-        <pre><span class="c"># 1. Crear cuenta en kimi.com si no tienes una</span>
+      <div data-lang="es">
+        <h3>Paso 2 — Cuenta Kimi y membresía activa</h3>
+        <div class="step">
+          <pre><span class="c"># 1. Crear cuenta en kimi.com si no tienes una</span>
 <span class="c">#    → https://www.kimi.com/membership/pricing</span>
 
 <span class="c"># 2. Suscribirse a un plan que incluya Kimi Code</span>
@@ -1003,16 +1172,41 @@
 <span class="c"># 3. Obtener API Key para configuración avanzada (opcional)</span>
 <span class="c">#    → https://www.kimi.com/code/console</span>
 <span class="c">#    → Crear hasta 5 API Keys (cada una se muestra una sola vez, guardarla bien)</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Step 2 — Kimi account and active membership</h3>
+        <div class="step">
+          <pre><span class="c"># 1. Create an account at kimi.com if you don't have one</span>
+<span class="c">#    → https://www.kimi.com/membership/pricing</span>
+
+<span class="c"># 2. Subscribe to a plan that includes Kimi Code</span>
+<span class="c">#    → Kimi plans with Kimi Code access include a weekly request quota</span>
+<span class="c">#    → The quota renews every 7 days from the subscription date</span>
+
+<span class="c"># 3. Get an API Key for advanced configuration (optional)</span>
+<span class="c">#    → https://www.kimi.com/code/console</span>
+<span class="c">#    → Create up to 5 API Keys (each is shown only once, save it securely)</span></pre>
+        </div>
       </div>
 
       <div class="alert aw">
         <div>💳</div>
         <div class="ab">
-          <div class="t">Kimi Code requiere membresía activa</div>
-          <p>El plan gratuito de Kimi no incluye acceso a Kimi Code CLI. Necesitas una suscripción con Kimi Code
-            benefits activados. Verificá en <code>kimi.com/membership/pricing</code> los planes disponibles.</p>
-          <p>La cuota semanal es compartida entre CLI, VS Code y API Keys. Todos los dispositivos y keys comparten el
-            mismo pool de quota.</p>
+          <div data-lang="es" class="t">Kimi Code requiere membresía activa</div>
+          <div data-lang="en" class="t">Kimi Code requires an active membership</div>
+          <div data-lang="es">
+            <p>El plan gratuito de Kimi no incluye acceso a Kimi Code CLI. Necesitas una suscripción con Kimi Code
+              benefits activados. Verificá en <code>kimi.com/membership/pricing</code> los planes disponibles.</p>
+            <p>La cuota semanal es compartida entre CLI, VS Code y API Keys. Todos los dispositivos y keys comparten el
+              mismo pool de quota.</p>
+          </div>
+          <div data-lang="en">
+            <p>The free Kimi plan does not include access to Kimi Code CLI. You need a subscription with Kimi Code
+              benefits activated. Check <code>kimi.com/membership/pricing</code> for available plans.</p>
+            <p>The weekly quota is shared across CLI, VS Code, and API Keys. All devices and keys share the
+              same quota pool.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1023,17 +1217,20 @@
       <div class="ph-hd">
         <div class="ph-num tl">1</div>
         <div>
-          <div class="ph-t">Instalar Kimi Code CLI en Windows 11</div>
-          <div class="ph-s">Installer oficial vía PowerShell · Instala uv y Kimi CLI automáticamente</div>
+          <div data-lang="es" class="ph-t">Instalar Kimi Code CLI en Windows 11</div>
+          <div data-lang="en" class="ph-t">Install Kimi Code CLI on Windows 11</div>
+          <div data-lang="es" class="ph-s">Installer oficial vía PowerShell · Instala uv y Kimi CLI automáticamente</div>
+          <div data-lang="en" class="ph-s">Official installer via PowerShell · Installs uv and Kimi CLI automatically</div>
         </div>
       </div>
 
-      <h3>Instalación oficial (recomendada)</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dps"></div>PowerShell 7 — NO necesitas ejecutar como Administrador
-        </div>
-        <pre><span class="c"># Installer oficial de Moonshot AI</span>
+      <div data-lang="es">
+        <h3>Instalación oficial (recomendada)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — NO necesitas ejecutar como Administrador
+          </div>
+          <pre><span class="c"># Installer oficial de Moonshot AI</span>
 <span class="c"># Descarga e instala uv (Python package manager) y luego Kimi Code CLI</span>
 <span class="k">Invoke-RestMethod</span> https://code.kimi.com/install.ps1 | <span class="k">Invoke-Expression</span>
 
@@ -1044,34 +1241,79 @@
 
 <span class="c"># Verificar que uv también quedó instalado</span>
 <span class="k">uv</span> --version</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Official installation (recommended)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — NO need to run as Administrator
+          </div>
+          <pre><span class="c"># Official Moonshot AI installer</span>
+<span class="c"># Downloads and installs uv (Python package manager) and then Kimi Code CLI</span>
+<span class="k">Invoke-RestMethod</span> https://code.kimi.com/install.ps1 | <span class="k">Invoke-Expression</span>
+
+<span class="c"># Close and reopen PowerShell (needed for PATH to take effect)</span>
+
+<span class="c"># Verify installation</span>
+<span class="k">kimi</span> --version
+
+<span class="c"># Verify uv was also installed</span>
+<span class="k">uv</span> --version</pre>
+        </div>
       </div>
 
-      <h3>Instalación alternativa vía uv (si ya tienes uv)</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dkm"></div>PowerShell 7
-        </div>
-        <pre><span class="c"># Si ya tienes uv instalado, podés instalar Kimi CLI directamente</span>
+      <div data-lang="es">
+        <h3>Instalación alternativa vía uv (si ya tienes uv)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Si ya tienes uv instalado, podés instalar Kimi CLI directamente</span>
 <span class="k">uv</span> tool install --python 3.13 kimi-cli
 
 <span class="c"># Verificar</span>
 <span class="k">kimi</span> --version</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Alternative installation via uv (if you already have uv)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># If you already have uv installed, you can install Kimi CLI directly</span>
+<span class="k">uv</span> tool install --python 3.13 kimi-cli
+
+<span class="c"># Verify</span>
+<span class="k">kimi</span> --version</pre>
+        </div>
       </div>
 
       <div class="alert ai">
         <div>🐍</div>
         <div class="ab">
-          <div class="t">Kimi Code CLI usa Python — pero no lo gestionás vos</div>
-          <p>A diferencia de Claude Code (que es un binario Go), Kimi Code CLI está escrito en Python. Sin embargo,
-            <code>uv</code> gestiona el entorno por completo. No necesitás instalar Python manualmente, no hay
-            conflictos con tu Python del sistema, y no hay <code>pip install</code> manual. Todo es automático.</p>
-          <p>Kimi Code soporta Python 3.12–3.14. Python 3.13 es el recomendado para mejor compatibilidad.</p>
+          <div data-lang="es" class="t">Kimi Code CLI usa Python — pero no lo gestionás vos</div>
+          <div data-lang="en" class="t">Kimi Code CLI uses Python — but you don't manage it</div>
+          <div data-lang="es">
+            <p>A diferencia de Claude Code (que es un binario Go), Kimi Code CLI está escrito en Python. Sin embargo,
+              <code>uv</code> gestiona el entorno por completo. No necesitás instalar Python manualmente, no hay
+              conflictos con tu Python del sistema, y no hay <code>pip install</code> manual. Todo es automático.</p>
+            <p>Kimi Code soporta Python 3.12–3.14. Python 3.13 es el recomendado para mejor compatibilidad.</p>
+          </div>
+          <div data-lang="en">
+            <p>Unlike Claude Code (which is a Go binary), Kimi Code CLI is written in Python. However,
+              <code>uv</code> manages the environment completely. You don't need to install Python manually, there are no
+              conflicts with your system Python, and no manual <code>pip install</code>. Everything is automatic.</p>
+            <p>Kimi Code supports Python 3.12–3.14. Python 3.13 is recommended for best compatibility.</p>
+          </div>
         </div>
       </div>
 
-      <h3>Dónde instala Kimi Code en Windows</h3>
-      <div class="step">
-        <pre><span class="c"># El binario (script entry point) queda en:</span>
+      <div data-lang="es">
+        <h3>Dónde instala Kimi Code en Windows</h3>
+        <div class="step">
+          <pre><span class="c"># El binario (script entry point) queda en:</span>
 C:\Users\TuUsuario\.local\bin\kimi.exe  <span class="c"># (o vía uv tool bin path)</span>
 
 <span class="c"># La configuración principal queda en:</span>
@@ -1089,14 +1331,39 @@ C:\Users\TuUsuario\.kimi\
     <span class="s">"$env:PATH;$env:USERPROFILE\.local\bin"</span>,
     <span class="s">"User"</span>
 )</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Where Kimi Code installs on Windows</h3>
+        <div class="step">
+          <pre><span class="c"># The binary (script entry point) goes to:</span>
+C:\Users\YourUser\.local\bin\kimi.exe  <span class="c"># (or via uv tool bin path)</span>
+
+<span class="c"># Main configuration goes to:</span>
+C:\Users\YourUser\.kimi\config.toml
+
+<span class="c"># Sessions, logs, and MCP config in:</span>
+C:\Users\YourUser\.kimi\
+
+<span class="c"># If kimi is not recognized as a command, verify PATH includes:</span>
+<span class="k">uv</span> tool bin-path   <span class="c"># shows where uv installs binaries</span>
+
+<span class="c"># Add to PATH manually if needed:</span>
+<span class="k">[Environment]</span>::SetEnvironmentVariable(
+    <span class="s">"PATH"</span>,
+    <span class="s">"$env:PATH;$env:USERPROFILE\.local\bin"</span>,
+    <span class="s">"User"</span>
+)</pre>
+        </div>
       </div>
 
-      <h3>Login y autenticación con tu cuenta Kimi</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dkm"></div>PowerShell 7 — dentro del directorio de tu proyecto
-        </div>
-        <pre><span class="c"># Navegar a tu proyecto y abrir Kimi Code</span>
+      <div data-lang="es">
+        <h3>Login y autenticación con tu cuenta Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7 — dentro del directorio de tu proyecto
+          </div>
+          <pre><span class="c"># Navegar a tu proyecto y abrir Kimi Code</span>
 <span class="k">cd</span> C:\Users\TuUsuario\Projects\mi-proyecto
 <span class="k">kimi</span>
 
@@ -1110,100 +1377,217 @@ C:\Users\TuUsuario\.kimi\
 
 <span class="c"># Alternativa — API Key manual (para CI/CD o uso headless)</span>
 <span class="c"># En /login seleccionar "Custom" y pegar tu API Key del console</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Login and authentication with your Kimi account</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7 — inside your project directory
+          </div>
+          <pre><span class="c"># Navigate to your project and open Kimi Code</span>
+<span class="k">cd</span> C:\Users\YourUser\Projects\my-project
+<span class="k">kimi</span>
+
+<span class="c"># On the first session, run the login command</span>
+<span class="s">/login</span>
+
+<span class="c"># Select "Kimi Code" as the platform (recommended)</span>
+<span class="c"># → Opens the browser automatically for OAuth</span>
+<span class="c"># → Log in with your Kimi account → authorize → return to terminal</span>
+<span class="c"># → Session is saved in ~/.kimi/</span>
+
+<span class="c"># Alternative — Manual API Key (for CI/CD or headless use)</span>
+<span class="c"># In /login select "Custom" and paste your API Key from the console</span></pre>
+        </div>
       </div>
 
       <div class="alert ao">
         <div>✅</div>
         <div class="ab">
-          <div class="t">Verificar que Kimi Code está activo</div>
-          <p>Una vez autenticado, ejecutá <code>/usage</code> (alias <code>/status</code>) para ver tu cuota restante.
-            Deberías ver el modelo activo apuntando automáticamente al más reciente (actualmente K2.6).</p>
+          <div data-lang="es" class="t">Verificar que Kimi Code está activo</div>
+          <div data-lang="en" class="t">Verify that Kimi Code is active</div>
+          <div data-lang="es">
+            <p>Una vez autenticado, ejecutá <code>/usage</code> (alias <code>/status</code>) para ver tu cuota restante.
+              Deberías ver el modelo activo apuntando automáticamente al más reciente (actualmente K2.6).</p>
+          </div>
+          <div data-lang="en">
+            <p>Once authenticated, run <code>/usage</code> (alias <code>/status</code>) to see your remaining quota.
+              You should see the active model pointing automatically to the latest one (currently K2.6).</p>
+          </div>
         </div>
       </div>
 
-      <h3>Comandos esenciales de Kimi Code CLI</h3>
-      <table>
-        <tr>
-          <th>Comando</th>
-          <th>Descripción</th>
-        </tr>
-        <tr>
-          <td><code>kimi</code></td>
-          <td>Inicia sesión interactiva en el directorio actual</td>
-        </tr>
-        <tr>
-          <td><code>kimi login</code></td>
-          <td>Login OAuth con tu cuenta Kimi (alternativa a <code>/login</code>)</td>
-        </tr>
-        <tr>
-          <td><code>kimi web</code></td>
-          <td>Abre interfaz gráfica en el browser local</td>
-        </tr>
-        <tr>
-          <td><code>kimi --thinking</code></td>
-          <td>Inicia con modo thinking activado (razonamiento profundo)</td>
-        </tr>
-        <tr>
-          <td><code>kimi --agent-file PATH</code></td>
-          <td>Carga el agente de gentle-ai</td>
-        </tr>
-        <tr>
-          <td><code>/login</code></td>
-          <td>Configurar o cambiar fuente de API</td>
-        </tr>
-        <tr>
-          <td><code>/usage</code></td>
-          <td>Ver cuota restante (alias: <code>/status</code>)</td>
-        </tr>
-        <tr>
-          <td><code>/init</code></td>
-          <td>Analizar el proyecto y generar AGENTS.md</td>
-        </tr>
-        <tr>
-          <td><code>/sdd-init</code></td>
-          <td>Iniciar workflow SDD — detecta stack y testing</td>
-        </tr>
-        <tr>
-          <td><code>/compact</code></td>
-          <td>Comprimir historial manteniendo contexto clave</td>
-        </tr>
-        <tr>
-          <td><code>/sessions</code></td>
-          <td>Ver y cambiar entre sesiones (alias: <code>/resume</code>)</td>
-        </tr>
-        <tr>
-          <td><code>/undo</code></td>
-          <td>Rollback a un turno anterior y reintentar</td>
-        </tr>
-        <tr>
-          <td><code>/fork</code></td>
-          <td>Bifurcar sesión actual para probar otra dirección</td>
-        </tr>
-        <tr>
-          <td><code>/plan</code></td>
-          <td>Modo planificación (solo lectura + plan de implementación)</td>
-        </tr>
-        <tr>
-          <td><code>/yolo</code></td>
-          <td>Auto-aprobar todas las operaciones (con precaución)</td>
-        </tr>
-        <tr>
-          <td><code>/help</code></td>
-          <td>Ver todos los comandos disponibles</td>
-        </tr>
-        <tr>
-          <td><code>Ctrl-X</code></td>
-          <td>Cambiar entre modo agente y modo shell directo</td>
-        </tr>
-        <tr>
-          <td><code>Shift-Tab</code></td>
-          <td>Activar/desactivar modo plan</td>
-        </tr>
-        <tr>
-          <td><code>Ctrl-J / Alt-Enter</code></td>
-          <td>Insertar saltos de línea al pegar código o logs</td>
-        </tr>
-      </table>
+      <div data-lang="es">
+        <h3>Comandos esenciales de Kimi Code CLI</h3>
+        <table>
+          <tr>
+            <th>Comando</th>
+            <th>Descripción</th>
+          </tr>
+          <tr>
+            <td><code>kimi</code></td>
+            <td>Inicia sesión interactiva en el directorio actual</td>
+          </tr>
+          <tr>
+            <td><code>kimi login</code></td>
+            <td>Login OAuth con tu cuenta Kimi (alternativa a <code>/login</code>)</td>
+          </tr>
+          <tr>
+            <td><code>kimi web</code></td>
+            <td>Abre interfaz gráfica en el browser local</td>
+          </tr>
+          <tr>
+            <td><code>kimi --thinking</code></td>
+            <td>Inicia con modo thinking activado (razonamiento profundo)</td>
+          </tr>
+          <tr>
+            <td><code>kimi --agent-file PATH</code></td>
+            <td>Carga el agente de gentle-ai</td>
+          </tr>
+          <tr>
+            <td><code>/login</code></td>
+            <td>Configurar o cambiar fuente de API</td>
+          </tr>
+          <tr>
+            <td><code>/usage</code></td>
+            <td>Ver cuota restante (alias: <code>/status</code>)</td>
+          </tr>
+          <tr>
+            <td><code>/init</code></td>
+            <td>Analizar el proyecto y generar AGENTS.md</td>
+          </tr>
+          <tr>
+            <td><code>/sdd-init</code></td>
+            <td>Iniciar workflow SDD — detecta stack y testing</td>
+          </tr>
+          <tr>
+            <td><code>/compact</code></td>
+            <td>Comprimir historial manteniendo contexto clave</td>
+          </tr>
+          <tr>
+            <td><code>/sessions</code></td>
+            <td>Ver y cambiar entre sesiones (alias: <code>/resume</code>)</td>
+          </tr>
+          <tr>
+            <td><code>/undo</code></td>
+            <td>Rollback a un turno anterior y reintentar</td>
+          </tr>
+          <tr>
+            <td><code>/fork</code></td>
+            <td>Bifurcar sesión actual para probar otra dirección</td>
+          </tr>
+          <tr>
+            <td><code>/plan</code></td>
+            <td>Modo planificación (solo lectura + plan de implementación)</td>
+          </tr>
+          <tr>
+            <td><code>/yolo</code></td>
+            <td>Auto-aprobar todas las operaciones (con precaución)</td>
+          </tr>
+          <tr>
+            <td><code>/help</code></td>
+            <td>Ver todos los comandos disponibles</td>
+          </tr>
+          <tr>
+            <td><code>Ctrl-X</code></td>
+            <td>Cambiar entre modo agente y modo shell directo</td>
+          </tr>
+          <tr>
+            <td><code>Shift-Tab</code></td>
+            <td>Activar/desactivar modo plan</td>
+          </tr>
+          <tr>
+            <td><code>Ctrl-J / Alt-Enter</code></td>
+            <td>Insertar saltos de línea al pegar código o logs</td>
+          </tr>
+        </table>
+      </div>
+      <div data-lang="en">
+        <h3>Essential Kimi Code CLI commands</h3>
+        <table>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>kimi</code></td>
+            <td>Start interactive session in current directory</td>
+          </tr>
+          <tr>
+            <td><code>kimi login</code></td>
+            <td>OAuth login with your Kimi account (alternative to <code>/login</code>)</td>
+          </tr>
+          <tr>
+            <td><code>kimi web</code></td>
+            <td>Open graphical interface in local browser</td>
+          </tr>
+          <tr>
+            <td><code>kimi --thinking</code></td>
+            <td>Start with thinking mode enabled (deep reasoning)</td>
+          </tr>
+          <tr>
+            <td><code>kimi --agent-file PATH</code></td>
+            <td>Load the gentle-ai agent</td>
+          </tr>
+          <tr>
+            <td><code>/login</code></td>
+            <td>Configure or change API source</td>
+          </tr>
+          <tr>
+            <td><code>/usage</code></td>
+            <td>View remaining quota (alias: <code>/status</code>)</td>
+          </tr>
+          <tr>
+            <td><code>/init</code></td>
+            <td>Analyze project and generate AGENTS.md</td>
+          </tr>
+          <tr>
+            <td><code>/sdd-init</code></td>
+            <td>Start SDD workflow — detects stack and testing</td>
+          </tr>
+          <tr>
+            <td><code>/compact</code></td>
+            <td>Compress history keeping key context</td>
+          </tr>
+          <tr>
+            <td><code>/sessions</code></td>
+            <td>View and switch between sessions (alias: <code>/resume</code>)</td>
+          </tr>
+          <tr>
+            <td><code>/undo</code></td>
+            <td>Rollback to a previous turn and retry</td>
+          </tr>
+          <tr>
+            <td><code>/fork</code></td>
+            <td>Fork current session to try another direction</td>
+          </tr>
+          <tr>
+            <td><code>/plan</code></td>
+            <td>Planning mode (read-only + implementation plan)</td>
+          </tr>
+          <tr>
+            <td><code>/yolo</code></td>
+            <td>Auto-approve all operations (use with caution)</td>
+          </tr>
+          <tr>
+            <td><code>/help</code></td>
+            <td>View all available commands</td>
+          </tr>
+          <tr>
+            <td><code>Ctrl-X</code></td>
+            <td>Switch between agent mode and direct shell mode</td>
+          </tr>
+          <tr>
+            <td><code>Shift-Tab</code></td>
+            <td>Toggle plan mode on/off</td>
+          </tr>
+          <tr>
+            <td><code>Ctrl-J / Alt-Enter</code></td>
+            <td>Insert line breaks when pasting code or logs</td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <!-- ═══ FASE 2 — GENTLE-AI ═══ -->
@@ -1212,41 +1596,69 @@ C:\Users\TuUsuario\.kimi\
       <div class="ph-hd">
         <div class="ph-num or">2</div>
         <div>
-          <div class="ph-t">Instalar Gentle-AI en Windows 11</div>
-          <div class="ph-s">Binario nativo de Go · Installer PowerShell oficial · Sin dependencias runtime</div>
+          <div data-lang="es" class="ph-t">Instalar Gentle-AI en Windows 11</div>
+          <div data-lang="en" class="ph-t">Install Gentle-AI on Windows 11</div>
+          <div data-lang="es" class="ph-s">Binario nativo de Go · Installer PowerShell oficial · Sin dependencias runtime</div>
+          <div data-lang="en" class="ph-s">Native Go binary · Official PowerShell installer · No runtime dependencies</div>
         </div>
       </div>
 
       <div class="alert aor">
         <div>⚡</div>
         <div class="ab">
-          <div class="t">¿Qué hace gentle-ai exactamente?</div>
-          <p>Gentle-AI <strong>no instala Kimi Code</strong>. Lo que hace es detectar los agentes que tenés instalados y
-            configurarles el ecosistema Gentleman completo: inyecta el archivo de configuración del agente
-            (<code>~/.kimi/agents/gentleman.yaml</code>), crea el prompt <code>KIMI.md</code>, instala MCP servers
-            (Context7), y configura el hook de git para GGA.</p>
+          <div data-lang="es" class="t">¿Qué hace gentle-ai exactamente?</div>
+          <div data-lang="en" class="t">What does gentle-ai actually do?</div>
+          <div data-lang="es">
+            <p>Gentle-AI <strong>no instala Kimi Code</strong>. Lo que hace es detectar los agentes que tenés instalados y
+              configurarles el ecosistema Gentleman completo: inyecta el archivo de configuración del agente
+              (<code>~/.kimi/agents/gentleman.yaml</code>), crea el prompt <code>KIMI.md</code>, instala MCP servers
+              (Context7), y configura el hook de git para GGA.</p>
+          </div>
+          <div data-lang="en">
+            <p>Gentle-AI <strong>does not install Kimi Code</strong>. What it does is detect the agents you have installed and
+              configure the complete Gentleman ecosystem for them: injects the agent configuration file
+              (<code>~/.kimi/agents/gentleman.yaml</code>), creates the <code>KIMI.md</code> prompt, installs MCP servers
+              (Context7), and configures the git hook for GGA.</p>
+          </div>
         </div>
       </div>
 
-      <h3>Opción A — Installer PowerShell (recomendada, sin Go)</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dps"></div>PowerShell 7
-        </div>
-        <pre><span class="c"># Descarga el binario compilado directamente desde GitHub Releases</span>
+      <div data-lang="es">
+        <h3>Opción A — Installer PowerShell (recomendada, sin Go)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Descarga el binario compilado directamente desde GitHub Releases</span>
 <span class="c"># No necesitás Go instalado</span>
 <span class="k">irm</span> https://raw.githubusercontent.com/Gentleman-Programming/gentle-ai/main/scripts/install.ps1 | <span class="k">iex</span>
 
 <span class="c"># Verificar</span>
 <span class="k">gentle-ai</span> --version</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Option A — PowerShell Installer (recommended, no Go)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Download the compiled binary directly from GitHub Releases</span>
+<span class="c"># You don't need Go installed</span>
+<span class="k">irm</span> https://raw.githubusercontent.com/Gentleman-Programming/gentle-ai/main/scripts/install.ps1 | <span class="k">iex</span>
+
+<span class="c"># Verify</span>
+<span class="k">gentle-ai</span> --version</pre>
+        </div>
       </div>
 
-      <h3>Opción B — Scoop (gestor de paquetes Windows)</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dps"></div>PowerShell 7 — si usás Scoop
-        </div>
-        <pre><span class="c"># Agregar el bucket de Gentleman Programming</span>
+      <div data-lang="es">
+        <h3>Opción B — Scoop (gestor de paquetes Windows)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — si usás Scoop
+          </div>
+          <pre><span class="c"># Agregar el bucket de Gentleman Programming</span>
 <span class="k">scoop</span> bucket add gentleman https://github.com/Gentleman-Programming/scoop-bucket
 
 <span class="c"># Instalar gentle-ai</span>
@@ -1254,14 +1666,32 @@ C:\Users\TuUsuario\.kimi\
 
 <span class="c"># Verificar</span>
 <span class="k">gentle-ai</span> --version</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Option B — Scoop (Windows package manager)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — if you use Scoop
+          </div>
+          <pre><span class="c"># Add the Gentleman Programming bucket</span>
+<span class="k">scoop</span> bucket add gentleman https://github.com/Gentleman-Programming/scoop-bucket
+
+<span class="c"># Install gentle-ai</span>
+<span class="k">scoop</span> install gentle-ai
+
+<span class="c"># Verify</span>
+<span class="k">gentle-ai</span> --version</pre>
+        </div>
       </div>
 
-      <h3>Opción C — Go install (siempre el latest, si tenés Go 1.24+)</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dps"></div>PowerShell 7 — requiere Go instalado
-        </div>
-        <pre><span class="c"># Instalar Go 1.24+ primero si no lo tenés</span>
+      <div data-lang="es">
+        <h3>Opción C — Go install (siempre el latest, si tenés Go 1.24+)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — requiere Go instalado
+          </div>
+          <pre><span class="c"># Instalar Go 1.24+ primero si no lo tenés</span>
 <span class="k">winget</span> install --id GoLang.Go -e
 
 <span class="c"># Compilar e instalar desde fuente (garantiza el latest)</span>
@@ -1270,14 +1700,39 @@ C:\Users\TuUsuario\.kimi\
 <span class="c"># El binario queda en: C:\Users\TuUsuario\go\bin\gentle-ai.exe</span>
 <span class="c"># Verificar</span>
 <span class="k">gentle-ai</span> --version</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Option C — Go install (always latest, if you have Go 1.24+)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dps"></div>PowerShell 7 — requires Go installed
+          </div>
+          <pre><span class="c"># Install Go 1.24+ first if you don't have it</span>
+<span class="k">winget</span> install --id GoLang.Go -e
+
+<span class="c"># Compile and install from source (guarantees latest)</span>
+<span class="k">go</span> install github.com/gentleman-programming/gentle-ai/cmd/gentle-ai@latest
+
+<span class="c"># Binary goes to: C:\Users\YourUser\go\bin\gentle-ai.exe</span>
+<span class="c"># Verify</span>
+<span class="k">gentle-ai</span> --version</pre>
+        </div>
       </div>
 
       <div class="alert ao">
         <div>✅</div>
         <div class="ab">
-          <div class="t">gentle-ai es un binario estático — cero dependencias en runtime</div>
-          <p>Una vez instalado, el binario funciona solo. Sin Python, sin Node.js, sin Docker, sin ningún runtime
-            adicional. Solo el ejecutable <code>gentle-ai.exe</code> de ~10MB.</p>
+          <div data-lang="es" class="t">gentle-ai es un binario estático — cero dependencias en runtime</div>
+          <div data-lang="en" class="t">gentle-ai is a static binary — zero runtime dependencies</div>
+          <div data-lang="es">
+            <p>Una vez instalado, el binario funciona solo. Sin Python, sin Node.js, sin Docker, sin ningún runtime
+              adicional. Solo el ejecutable <code>gentle-ai.exe</code> de ~10MB.</p>
+          </div>
+          <div data-lang="en">
+            <p>Once installed, the binary works on its own. No Python, no Node.js, no Docker, no additional
+              runtime. Just the <code>gentle-ai.exe</code> executable of ~10MB.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1288,29 +1743,42 @@ C:\Users\TuUsuario\.kimi\
       <div class="ph-hd">
         <div class="ph-num gn">3</div>
         <div>
-          <div class="ph-t">Configurar Gentle-AI para Kimi Code</div>
-          <div class="ph-s">Detección automática del agente · Un solo comando para configurar todo</div>
+          <div data-lang="es" class="ph-t">Configurar Gentle-AI para Kimi Code</div>
+          <div data-lang="en" class="ph-t">Configure Gentle-AI for Kimi Code</div>
+          <div data-lang="es" class="ph-s">Detección automática del agente · Un solo comando para configurar todo</div>
+          <div data-lang="en" class="ph-s">Automatic agent detection · One command to set everything up</div>
         </div>
       </div>
 
       <div class="alert ai">
         <div>🔍</div>
         <div class="ab">
-          <div class="t">Detección automática de Kimi Code</div>
-          <p>Gentle-AI detecta Kimi Code automáticamente buscando el directorio de configuración <code>~/.kimi</code> y
-            el binario <code>kimi</code> en el PATH. Si ambos existen, el agente "kimi" aparece disponible en el
-            instalador.</p>
-          <p><strong>Importante:</strong> Kimi Code CLI debe estar instalado y con <code>/login</code> completado
-            <em>antes</em> de correr <code>gentle-ai install</code>.</p>
+          <div data-lang="es" class="t">Detección automática de Kimi Code</div>
+          <div data-lang="en" class="t">Automatic Kimi Code detection</div>
+          <div data-lang="es">
+            <p>Gentle-AI detecta Kimi Code automáticamente buscando el directorio de configuración <code>~/.kimi</code> y
+              el binario <code>kimi</code> en el PATH. Si ambos existen, el agente "kimi" aparece disponible en el
+              instalador.</p>
+            <p><strong>Importante:</strong> Kimi Code CLI debe estar instalado y con <code>/login</code> completado
+              <em>antes</em> de correr <code>gentle-ai install</code>.</p>
+          </div>
+          <div data-lang="en">
+            <p>Gentle-AI detects Kimi Code automatically by looking for the configuration directory <code>~/.kimi</code> and
+              the <code>kimi</code> binary in PATH. If both exist, the "kimi" agent appears available in the
+              installer.</p>
+            <p><strong>Important:</strong> Kimi Code CLI must be installed and <code>/login</code> completed
+              <em>before</em> running <code>gentle-ai install</code>.</p>
+          </div>
         </div>
       </div>
 
-      <h3>Instalación del ecosistema para Kimi</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dor"></div>PowerShell 7
-        </div>
-        <pre><span class="c"># Opción A — TUI interactivo (recomendado para primera vez)</span>
+      <div data-lang="es">
+        <h3>Instalación del ecosistema para Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dor"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Opción A — TUI interactivo (recomendado para primera vez)</span>
 <span class="c"># Abre un menú visual donde elegís "kimi" como agente y seleccionás los componentes</span>
 <span class="k">gentle-ai</span> install
 
@@ -1322,11 +1790,33 @@ C:\Users\TuUsuario\.kimi\
 
 <span class="c"># Verificar qué agentes detectó gentle-ai</span>
 <span class="k">gentle-ai</span> agents list</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Install the ecosystem for Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dor"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Option A — Interactive TUI (recommended for first time)</span>
+<span class="c"># Opens a visual menu where you choose "kimi" as the agent and select components</span>
+<span class="k">gentle-ai</span> install
+
+<span class="c"># Option B — Direct installation for Kimi Code</span>
+<span class="k">gentle-ai</span> install --agent kimi
+
+<span class="c"># Option C — With specific components</span>
+<span class="k">gentle-ai</span> install --agent kimi --component engram --component context7 --component gga
+
+<span class="c"># Verify which agents gentle-ai detected</span>
+<span class="k">gentle-ai</span> agents list</pre>
+        </div>
       </div>
 
-      <h3>Qué crea gentle-ai en tu sistema para Kimi</h3>
-      <div class="step">
-        <pre><span class="c"># Archivo de agente principal — define el comportamiento del Gentleman</span>
+      <div data-lang="es">
+        <h3>Qué crea gentle-ai en tu sistema para Kimi</h3>
+        <div class="step">
+          <pre><span class="c"># Archivo de agente principal — define el comportamiento del Gentleman</span>
 C:\Users\TuUsuario\.kimi\agents\gentleman.yaml
 
 <span class="c"># Prompt principal del agente (Jinja template)</span>
@@ -1341,14 +1831,36 @@ C:\Users\TuUsuario\.kimi\mcp.json
 
 <span class="c"># Git hook para GGA (code review automático)</span>
 <span class="c"># Se instala en: .git/hooks/pre-commit (dentro de cada proyecto)</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>What gentle-ai creates on your system for Kimi</h3>
+        <div class="step">
+          <pre><span class="c"># Main agent file — defines the Gentleman's behavior</span>
+C:\Users\YourUser\.kimi\agents\gentleman.yaml
+
+<span class="c"># Main agent prompt (Jinja template)</span>
+C:\Users\YourUser\.kimi\KIMI.md
+<span class="c"># Includes: persona.md, output-style.md, engram-protocol.md, sdd-orchestrator.md</span>
+
+<span class="c"># Persistent memory database</span>
+C:\Users\YourUser\.engram\engram.db
+
+<span class="c"># MCP config — Context7 and other servers</span>
+C:\Users\YourUser\.kimi\mcp.json
+
+<span class="c"># Git hook for GGA (automatic code review)</span>
+<span class="c"># Installed at: .git/hooks/pre-commit (inside each project)</span></pre>
+        </div>
       </div>
 
-      <h3>Iniciar Kimi Code con el agente Gentleman</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dkm"></div>PowerShell 7 — dentro de tu proyecto
-        </div>
-        <pre><span class="c"># Opción A — Cargar el agente gentleman directamente</span>
+      <div data-lang="es">
+        <h3>Iniciar Kimi Code con el agente Gentleman</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7 — dentro de tu proyecto
+          </div>
+          <pre><span class="c"># Opción A — Cargar el agente gentleman directamente</span>
 <span class="k">kimi</span> --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"
 
 <span class="c"># Opción B — Configurar el agente como default en config.toml</span>
@@ -1361,17 +1873,49 @@ C:\Users\TuUsuario\.kimi\mcp.json
 
 <span class="c"># Opción C — Con modo thinking activado desde el inicio</span>
 <span class="k">kimi</span> --thinking --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Start Kimi Code with the Gentleman agent</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7 — inside your project
+          </div>
+          <pre><span class="c"># Option A — Load the gentleman agent directly</span>
+<span class="k">kimi</span> --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"
+
+<span class="c"># Option B — Set the agent as default in config.toml</span>
+<span class="c"># Edit C:\Users\YourUser\.kimi\config.toml and add:</span>
+<span class="c"># [agent]</span>
+<span class="c"># default_agent_file = "C:/Users/YourUser/.kimi/agents/gentleman.yaml"</span>
+
+<span class="c"># Then simply:</span>
+<span class="k">kimi</span>
+
+<span class="c"># Option C — With thinking mode enabled from the start</span>
+<span class="k">kimi</span> --thinking --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</pre>
+        </div>
       </div>
 
       <div class="alert ao">
         <div>✅</div>
         <div class="ab">
-          <div class="t">Crear un alias en PowerShell para simplificar</div>
-          <p>Podés agregar un alias en tu perfil de PowerShell para no escribir el flag <code>--agent-file</code>
-            siempre:</p>
-          <p><code>notepad $PROFILE</code> → agregar:
-            <code>Set-Alias kimg "kimi --agent-file $env:USERPROFILE\.kimi\agents\gentleman.yaml"</code></p>
-          <p>Luego simplemente usás <code>kimg</code> en cualquier proyecto.</p>
+          <div data-lang="es" class="t">Crear un alias en PowerShell para simplificar</div>
+          <div data-lang="en" class="t">Create a PowerShell alias to simplify</div>
+          <div data-lang="es">
+            <p>Podés agregar un alias en tu perfil de PowerShell para no escribir el flag <code>--agent-file</code>
+              siempre:</p>
+            <p><code>notepad $PROFILE</code> → agregar:
+              <code>Set-Alias kimg "kimi --agent-file $env:USERPROFILE\.kimi\agents\gentleman.yaml"</code></p>
+            <p>Luego simplemente usás <code>kimg</code> en cualquier proyecto.</p>
+          </div>
+          <div data-lang="en">
+            <p>You can add an alias in your PowerShell profile so you don't have to type the <code>--agent-file</code>
+              flag every time:</p>
+            <p><code>notepad $PROFILE</code> → add:
+              <code>Set-Alias kimg "kimi --agent-file $env:USERPROFILE\.kimi\agents\gentleman.yaml"</code></p>
+            <p>Then simply use <code>kimg</code> in any project.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1382,17 +1926,20 @@ C:\Users\TuUsuario\.kimi\mcp.json
       <div class="ph-hd">
         <div class="ph-num st">4</div>
         <div>
-          <div class="ph-t">Inicializar un proyecto de programación</div>
-          <div class="ph-s">Registrar contexto + iniciar el workflow SDD</div>
+          <div data-lang="es" class="ph-t">Inicializar un proyecto de programación</div>
+          <div data-lang="en" class="ph-t">Initialize a programming project</div>
+          <div data-lang="es" class="ph-s">Registrar contexto + iniciar el workflow SDD</div>
+          <div data-lang="en" class="ph-s">Register context + start the SDD workflow</div>
         </div>
       </div>
 
-      <h3>Paso 1 — Preparar el proyecto (Git requerido)</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dgn"></div>PowerShell 7 — en la raíz del proyecto
-        </div>
-        <pre><span class="c"># El proyecto debe estar en git (requerido por Engram)</span>
+      <div data-lang="es">
+        <h3>Paso 1 — Preparar el proyecto (Git requerido)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dgn"></div>PowerShell 7 — en la raíz del proyecto
+          </div>
+          <pre><span class="c"># El proyecto debe estar en git (requerido por Engram)</span>
 <span class="k">git</span> init
 <span class="k">git</span> add .
 <span class="k">git</span> commit -m "init"
@@ -1400,14 +1947,32 @@ C:\Users\TuUsuario\.kimi\mcp.json
 <span class="c"># Engram ya fue configurado automáticamente por gentle-ai install</span>
 <span class="c"># Verificar que Engram reconoce el proyecto</span>
 <span class="k">engram</span> projects list</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Step 1 — Prepare the project (Git required)</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dgn"></div>PowerShell 7 — at the project root
+          </div>
+          <pre><span class="c"># Project must be in git (required by Engram)</span>
+<span class="k">git</span> init
+<span class="k">git</span> add .
+<span class="k">git</span> commit -m "init"
+
+<span class="c"># Engram was already configured automatically by gentle-ai install</span>
+<span class="c"># Verify that Engram recognizes the project</span>
+<span class="k">engram</span> projects list</pre>
+        </div>
       </div>
 
-      <h3>Paso 2 — Inicializar el contexto con Kimi</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dkm"></div>Kimi Code CLI — dentro del agente
-        </div>
-        <pre><span class="c"># Abrir Kimi con el agente Gentleman en el proyecto</span>
+      <div data-lang="es">
+        <h3>Paso 2 — Inicializar el contexto con Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>Kimi Code CLI — dentro del agente
+          </div>
+          <pre><span class="c"># Abrir Kimi con el agente Gentleman en el proyecto</span>
 <span class="k">kimi</span> --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"
 
 <span class="c"># Analizar el proyecto y generar AGENTS.md (si no existe)</span>
@@ -1421,54 +1986,129 @@ C:\Users\TuUsuario\.kimi\mcp.json
 
 <span class="c"># Verificar que Engram registró el contexto</span>
 <span class="k">engram</span> search <span class="s">"proyecto"</span>   <span class="c"># desde otra terminal</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Step 2 — Initialize context with Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>Kimi Code CLI — inside the agent
+          </div>
+          <pre><span class="c"># Open Kimi with the Gentleman agent in the project</span>
+<span class="k">kimi</span> --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"
+
+<span class="c"># Analyze the project and generate AGENTS.md (if it doesn't exist)</span>
+<span class="s">/init</span>
+
+<span class="c"># Start the SDD workflow — detects stack, testing, activates context</span>
+<span class="s">/sdd-init</span>
+
+<span class="c"># Scan installed skills and project conventions</span>
+<span class="s">skill-registry</span>
+
+<span class="c"># Verify that Engram registered the context</span>
+<span class="k">engram</span> search <span class="s">"project"</span>   <span class="c"># from another terminal</span></pre>
+        </div>
       </div>
 
-      <h3>Workflow SDD — las 9 fases en la práctica</h3>
-      <div class="flow">
-        <div class="fc">
-          <div class="fc-n">fase 01</div>
-          <div class="fc-t">Explore</div>
-          <div class="fc-d">Lectura del codebase, entender arquitectura actual</div>
+      <div data-lang="es">
+        <h3>Workflow SDD — las 9 fases en la práctica</h3>
+        <div class="flow">
+          <div class="fc">
+            <div class="fc-n">fase 01</div>
+            <div class="fc-t">Explore</div>
+            <div class="fc-d">Lectura del codebase, entender arquitectura actual</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 02</div>
+            <div class="fc-t">Propose</div>
+            <div class="fc-d">Kimi propone el approach antes de codear</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 03</div>
+            <div class="fc-t">Spec</div>
+            <div class="fc-d">Especificación técnica detallada, guardada en Engram</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 04</div>
+            <div class="fc-t">Design</div>
+            <div class="fc-d">Arquitectura de la solución, interfaces, tipos</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 05</div>
+            <div class="fc-t">Apply</div>
+            <div class="fc-d">Implementación con aprobación por cambio</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 06</div>
+            <div class="fc-t">Test</div>
+            <div class="fc-d">Kimi corre los tests y arregla los fallos</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 07</div>
+            <div class="fc-t">Review</div>
+            <div class="fc-d">GGA hace code review automático vía git hook</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 08</div>
+            <div class="fc-t">Verify</div>
+            <div class="fc-d">Verificación de que todo cumple la spec original</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">fase 09</div>
+            <div class="fc-t">Archive</div>
+            <div class="fc-d">Persistir decisiones y contexto en Engram</div>
+          </div>
         </div>
-        <div class="fc">
-          <div class="fc-n">fase 02</div>
-          <div class="fc-t">Propose</div>
-          <div class="fc-d">Kimi propone el approach antes de codear</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 03</div>
-          <div class="fc-t">Spec</div>
-          <div class="fc-d">Especificación técnica detallada, guardada en Engram</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 04</div>
-          <div class="fc-t">Design</div>
-          <div class="fc-d">Arquitectura de la solución, interfaces, tipos</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 05</div>
-          <div class="fc-t">Apply</div>
-          <div class="fc-d">Implementación con aprobación por cambio</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 06</div>
-          <div class="fc-t">Test</div>
-          <div class="fc-d">Kimi corre los tests y arregla los fallos</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 07</div>
-          <div class="fc-t">Review</div>
-          <div class="fc-d">GGA hace code review automático vía git hook</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 08</div>
-          <div class="fc-t">Verify</div>
-          <div class="fc-d">Verificación de que todo cumple la spec original</div>
-        </div>
-        <div class="fc">
-          <div class="fc-n">fase 09</div>
-          <div class="fc-t">Archive</div>
-          <div class="fc-d">Persistir decisiones y contexto en Engram</div>
+      </div>
+      <div data-lang="en">
+        <h3>SDD Workflow — the 9 phases in practice</h3>
+        <div class="flow">
+          <div class="fc">
+            <div class="fc-n">phase 01</div>
+            <div class="fc-t">Explore</div>
+            <div class="fc-d">Read the codebase, understand current architecture</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 02</div>
+            <div class="fc-t">Propose</div>
+            <div class="fc-d">Kimi proposes the approach before coding</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 03</div>
+            <div class="fc-t">Spec</div>
+            <div class="fc-d">Detailed technical specification, saved in Engram</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 04</div>
+            <div class="fc-t">Design</div>
+            <div class="fc-d">Solution architecture, interfaces, types</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 05</div>
+            <div class="fc-t">Apply</div>
+            <div class="fc-d">Implementation with per-change approval</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 06</div>
+            <div class="fc-t">Test</div>
+            <div class="fc-d">Kimi runs tests and fixes failures</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 07</div>
+            <div class="fc-t">Review</div>
+            <div class="fc-d">GGA runs automatic code review via git hook</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 08</div>
+            <div class="fc-t">Verify</div>
+            <div class="fc-d">Verify everything meets the original spec</div>
+          </div>
+          <div class="fc">
+            <div class="fc-n">phase 09</div>
+            <div class="fc-t">Archive</div>
+            <div class="fc-d">Persist decisions and context in Engram</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1479,19 +2119,22 @@ C:\Users\TuUsuario\.kimi\mcp.json
       <div class="ph-hd">
         <div class="ph-num km">5</div>
         <div>
-          <div class="ph-t">Uso en un proyecto de programación real</div>
-          <div class="ph-s">Prompts efectivos · MCP · Modo Thinking · Contexto de 256K</div>
+          <div data-lang="es" class="ph-t">Uso en un proyecto de programación real</div>
+          <div data-lang="en" class="ph-t">Use in a real programming project</div>
+          <div data-lang="es" class="ph-s">Prompts efectivos · MCP · Modo Thinking · Contexto de 256K</div>
+          <div data-lang="en" class="ph-s">Effective prompts · MCP · Thinking Mode · 256K context</div>
         </div>
       </div>
 
-      <h3>Prompts efectivos para el agente Gentleman</h3>
-      <div class="ub">
-        <h3>Ejemplos de prompts que activan el ecosistema completo</h3>
-        <div class="step">
-          <div class="stag">
-            <div class="dot-s dkm"></div>Kimi Code CLI — con el agente Gentleman activo
-          </div>
-          <pre><span class="c"># Iniciar una nueva feature con SDD completo</span>
+      <div data-lang="es">
+        <h3>Prompts efectivos para el agente Gentleman</h3>
+        <div class="ub">
+          <h3>Ejemplos de prompts que activan el ecosistema completo</h3>
+          <div class="step">
+            <div class="stag">
+              <div class="dot-s dkm"></div>Kimi Code CLI — con el agente Gentleman activo
+            </div>
+            <pre><span class="c"># Iniciar una nueva feature con SDD completo</span>
 Necesito implementar autenticación JWT en el backend de FastAPI.
 Seguí el workflow SDD y recordá guardar las decisiones en Engram.
 
@@ -1515,12 +2158,49 @@ de Server Components y aplicalas correctamente en el proyecto.
 <span class="c"># Usar una skill del ecosistema Gentleman</span>
 <span class="s">/skill:typescript-strict</span>   <span class="c"># aplica patrones TypeScript estrictos</span>
 <span class="s">/skill:react-patterns</span>      <span class="c"># mejores prácticas React 19</span></pre>
+          </div>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Effective prompts for the Gentleman agent</h3>
+        <div class="ub">
+          <h3>Example prompts that activate the full ecosystem</h3>
+          <div class="step">
+            <div class="stag">
+              <div class="dot-s dkm"></div>Kimi Code CLI — with Gentleman agent active
+            </div>
+            <pre><span class="c"># Start a new feature with full SDD</span>
+I need to implement JWT authentication in the FastAPI backend.
+Follow the SDD workflow and remember to save decisions in Engram.
+
+<span class="c"># Explore and understand the existing codebase</span>
+Analyze the entire project and tell me the current architecture.
+Then save the summary in Engram for future sessions.
+
+<span class="c"># Bug fix with deep reasoning (start with --thinking)</span>
+<span class="c"># Or use: kimi --thinking --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</span>
+The /api/users endpoint returns 500 sporadically under load.
+Analyze the logs, reproduce the issue, and propose a solution.
+
+<span class="c"># Multi-file refactor leveraging 256K context</span>
+I need to migrate from Context API to Zustand across the entire React app.
+Read all relevant files and propose the plan before changing anything.
+
+<span class="c"># Check updated documentation with Context7</span>
+I'm using Next.js 15.2. Query Context7 for the latest Server Components APIs
+and apply them correctly in the project.
+
+<span class="c"># Use a skill from the Gentleman ecosystem</span>
+<span class="s">/skill:typescript-strict</span>   <span class="c"># applies strict TypeScript patterns</span>
+<span class="s">/skill:react-patterns</span>      <span class="c"># React 19 best practices</span></pre>
+          </div>
         </div>
       </div>
 
-      <h3>Gestión de sesiones y contexto largo</h3>
-      <div class="step">
-        <pre><span class="c"># Ver sesiones activas</span>
+      <div data-lang="es">
+        <h3>Gestión de sesiones y contexto largo</h3>
+        <div class="step">
+          <pre><span class="c"># Ver sesiones activas</span>
 <span class="s">/sessions</span>
 
 <span class="c"># Reanudar sesión anterior (desde el mismo directorio, Kimi pregunta automáticamente)</span>
@@ -1534,14 +2214,35 @@ de Server Components y aplicalas correctamente en el proyecto.
 <span class="k">engram</span> search <span class="s">"JWT"</span>          <span class="c"># buscar decisiones sobre JWT</span>
 <span class="k">engram</span> search <span class="s">"auth bug"</span>     <span class="c"># buscar bugs de autenticación resueltos</span>
 <span class="k">engram</span> tui                    <span class="c"># browser visual de la memoria</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Session management and long context</h3>
+        <div class="step">
+          <pre><span class="c"># View active sessions</span>
+<span class="s">/sessions</span>
+
+<span class="c"># Resume previous session (from the same directory, Kimi asks automatically)</span>
+<span class="k">kimi</span> --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"
+
+<span class="c"># Compress history when context fills up</span>
+<span class="c"># (preserves key decisions saved in Engram)</span>
+<span class="s">/compact</span>
+
+<span class="c"># Search previous context in Engram from the terminal</span>
+<span class="k">engram</span> search <span class="s">"JWT"</span>          <span class="c"># search decisions about JWT</span>
+<span class="k">engram</span> search <span class="s">"auth bug"</span>     <span class="c"># search resolved authentication bugs</span>
+<span class="k">engram</span> tui                    <span class="c"># visual memory browser</span></pre>
+        </div>
       </div>
 
-      <h3>Integrar MCP servers adicionales con Kimi</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dgn"></div>PowerShell 7 — gestionar MCP servers
-        </div>
-        <pre><span class="c"># Gestionar MCP servers (interactivo — lista, conecta, desconecta)</span>
+      <div data-lang="es">
+        <h3>Integrar MCP servers adicionales con Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dgn"></div>PowerShell 7 — gestionar MCP servers
+          </div>
+          <pre><span class="c"># Gestionar MCP servers (interactivo — lista, conecta, desconecta)</span>
 <span class="k">kimi</span> mcp
 
 <span class="c"># Dentro de una sesión de Kimi, ver MCP servers conectados</span>
@@ -1553,14 +2254,36 @@ de Server Components y aplicalas correctamente en el proyecto.
 
 <span class="c"># Iniciar Kimi con un archivo de config MCP específico</span>
 <span class="k">kimi</span> --mcp-config-file "$env:USERPROFILE\.kimi\mcp.json" --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Integrate additional MCP servers with Kimi</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dgn"></div>PowerShell 7 — manage MCP servers
+          </div>
+          <pre><span class="c"># Manage MCP servers (interactive — list, connect, disconnect)</span>
+<span class="k">kimi</span> mcp
+
+<span class="c"># Inside a Kimi session, view connected MCP servers</span>
+<span class="s">/mcp</span>
+
+<span class="c"># The mcp.json generated by gentle-ai already includes Context7</span>
+<span class="c"># To add additional servers, edit directly:</span>
+<span class="c"># C:\Users\YourUser\.kimi\mcp.json</span>
+
+<span class="c"># Start Kimi with a specific MCP config file</span>
+<span class="k">kimi</span> --mcp-config-file "$env:USERPROFILE\.kimi\mcp.json" --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</pre>
+        </div>
       </div>
 
-      <h3>Modo Web UI — interfaz gráfica local</h3>
-      <div class="step">
-        <div class="stag">
-          <div class="dot-s dkm"></div>PowerShell 7
-        </div>
-        <pre><span class="c"># Abrir la interfaz gráfica en el browser</span>
+      <div data-lang="es">
+        <h3>Modo Web UI — interfaz gráfica local</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Abrir la interfaz gráfica en el browser</span>
 <span class="k">kimi</span> web
 
 <span class="c"># Soporta: gestión de sesiones, referencias a archivos, highlight de código</span>
@@ -1569,62 +2292,134 @@ de Server Components y aplicalas correctamente en el proyecto.
 
 <span class="c"># Kimi K2.6 soporta input multimodal — podés pegar screenshots de diseño</span>
 <span class="c"># y pedirle que implemente el componente React correspondiente</span></pre>
+        </div>
+      </div>
+      <div data-lang="en">
+        <h3>Web UI Mode — local graphical interface</h3>
+        <div class="step">
+          <div class="stag">
+            <div class="dot-s dkm"></div>PowerShell 7
+          </div>
+          <pre><span class="c"># Open the graphical interface in the browser</span>
+<span class="k">kimi</span> web
+
+<span class="c"># Supports: session management, file references, code highlighting</span>
+<span class="c"># Can also be used with the gentleman agent set as default</span>
+<span class="c"># Useful for visual reviews and pasting design images (UI → code)</span>
+
+<span class="c"># Kimi K2.6 supports multimodal input — you can paste design screenshots</span>
+<span class="c"># and ask it to implement the corresponding React component</span></pre>
+        </div>
       </div>
     </div>
 
     <!-- ═══ COMPARACION ═══ -->
     <div class="ph">
       <div class="div"></div><br><br>
-      <div
+      <div data-lang="es"
         style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;">
         // antes vs después</div>
-      <table>
-        <tr>
-          <th>Aspecto</th>
-          <th>Kimi Code solo</th>
-          <th>+ Gentle-AI</th>
-        </tr>
-        <tr>
-          <td><strong>Memoria entre sesiones</strong></td>
-          <td><span class="chip cb3">❌ Ninguna</span></td>
-          <td><span class="chip cb2">✅ Engram persiste todo</span></td>
-        </tr>
-        <tr>
-          <td><strong>Proceso de desarrollo</strong></td>
-          <td><span class="chip cb4">Ad-hoc</span></td>
-          <td><span class="chip cb2">✅ SDD estructurado (9 fases)</span></td>
-        </tr>
-        <tr>
-          <td><strong>Documentación de libs</strong></td>
-          <td><span class="chip cb4">Fecha de corte del modelo</span></td>
-          <td><span class="chip cb2">✅ Tiempo real con Context7</span></td>
-        </tr>
-        <tr>
-          <td><strong>Code review</strong></td>
-          <td><span class="chip cb3">❌ Solo si lo pedís</span></td>
-          <td><span class="chip cb2">✅ Automático en cada commit</span></td>
-        </tr>
-        <tr>
-          <td><strong>Onboarding al proyecto</strong></td>
-          <td><span class="chip cb3">❌ Explicás todo de nuevo</span></td>
-          <td><span class="chip cb2">✅ Kimi ya conoce el proyecto</span></td>
-        </tr>
-        <tr>
-          <td><strong>Persona del agente</strong></td>
-          <td><span class="chip cb4">Ejecutor sin criterio</span></td>
-          <td><span class="chip cb2">✅ Mentor que enseña y objeta</span></td>
-        </tr>
-        <tr>
-          <td><strong>Contexto</strong></td>
-          <td><span class="chip cb2">✅ 256K tokens (ventaja nativa)</span></td>
-          <td><span class="chip cb2">✅ 256K + Engram para persistencia</span></td>
-        </tr>
-        <tr>
-          <td><strong>Velocidad de respuesta</strong></td>
-          <td><span class="chip cb2">✅ ~100 tokens/s (ventaja nativa)</span></td>
-          <td><span class="chip cb2">✅ Igual de rápido</span></td>
-        </tr>
-      </table>
+      <div data-lang="en"
+        style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;">
+        // before vs after</div>
+      <div data-lang="es">
+        <table>
+          <tr>
+            <th>Aspecto</th>
+            <th>Kimi Code solo</th>
+            <th>+ Gentle-AI</th>
+          </tr>
+          <tr>
+            <td><strong>Memoria entre sesiones</strong></td>
+            <td><span class="chip cb3">❌ Ninguna</span></td>
+            <td><span class="chip cb2">✅ Engram persiste todo</span></td>
+          </tr>
+          <tr>
+            <td><strong>Proceso de desarrollo</strong></td>
+            <td><span class="chip cb4">Ad-hoc</span></td>
+            <td><span class="chip cb2">✅ SDD estructurado (9 fases)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Documentación de libs</strong></td>
+            <td><span class="chip cb4">Fecha de corte del modelo</span></td>
+            <td><span class="chip cb2">✅ Tiempo real con Context7</span></td>
+          </tr>
+          <tr>
+            <td><strong>Code review</strong></td>
+            <td><span class="chip cb3">❌ Solo si lo pedís</span></td>
+            <td><span class="chip cb2">✅ Automático en cada commit</span></td>
+          </tr>
+          <tr>
+            <td><strong>Onboarding al proyecto</strong></td>
+            <td><span class="chip cb3">❌ Explicás todo de nuevo</span></td>
+            <td><span class="chip cb2">✅ Kimi ya conoce el proyecto</span></td>
+          </tr>
+          <tr>
+            <td><strong>Persona del agente</strong></td>
+            <td><span class="chip cb4">Ejecutor sin criterio</span></td>
+            <td><span class="chip cb2">✅ Mentor que enseña y objeta</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contexto</strong></td>
+            <td><span class="chip cb2">✅ 256K tokens (ventaja nativa)</span></td>
+            <td><span class="chip cb2">✅ 256K + Engram para persistencia</span></td>
+          </tr>
+          <tr>
+            <td><strong>Velocidad de respuesta</strong></td>
+            <td><span class="chip cb2">✅ ~100 tokens/s (ventaja nativa)</span></td>
+            <td><span class="chip cb2">✅ Igual de rápido</span></td>
+          </tr>
+        </table>
+      </div>
+      <div data-lang="en">
+        <table>
+          <tr>
+            <th>Aspect</th>
+            <th>Kimi Code alone</th>
+            <th>+ Gentle-AI</th>
+          </tr>
+          <tr>
+            <td><strong>Memory across sessions</strong></td>
+            <td><span class="chip cb3">❌ None</span></td>
+            <td><span class="chip cb2">✅ Engram persists everything</span></td>
+          </tr>
+          <tr>
+            <td><strong>Development process</strong></td>
+            <td><span class="chip cb4">Ad-hoc</span></td>
+            <td><span class="chip cb2">✅ Structured SDD (9 phases)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Library docs</strong></td>
+            <td><span class="chip cb4">Model cutoff date</span></td>
+            <td><span class="chip cb2">✅ Real-time with Context7</span></td>
+          </tr>
+          <tr>
+            <td><strong>Code review</strong></td>
+            <td><span class="chip cb3">❌ Only if you ask</span></td>
+            <td><span class="chip cb2">✅ Automatic on every commit</span></td>
+          </tr>
+          <tr>
+            <td><strong>Project onboarding</strong></td>
+            <td><span class="chip cb3">❌ Explain everything again</span></td>
+            <td><span class="chip cb2">✅ Kimi already knows the project</span></td>
+          </tr>
+          <tr>
+            <td><strong>Agent persona</strong></td>
+            <td><span class="chip cb4">Executor without judgment</span></td>
+            <td><span class="chip cb2">✅ Mentor that teaches and objects</span></td>
+          </tr>
+          <tr>
+            <td><strong>Context</strong></td>
+            <td><span class="chip cb2">✅ 256K tokens (native advantage)</span></td>
+            <td><span class="chip cb2">✅ 256K + Engram for persistence</span></td>
+          </tr>
+          <tr>
+            <td><strong>Response speed</strong></td>
+            <td><span class="chip cb2">✅ ~100 tokens/s (native advantage)</span></td>
+            <td><span class="chip cb2">✅ Just as fast</span></td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <!-- ═══ TROUBLESHOOTING ═══ -->
@@ -1634,128 +2429,244 @@ de Server Components y aplicalas correctamente en el proyecto.
         <div class="ph-num"
           style="background:linear-gradient(135deg,#f87171,#dc2626);box-shadow:0 0 30px rgba(248,113,113,.2)">⚠</div>
         <div>
-          <div class="ph-t">Troubleshooting en Windows 11</div>
-          <div class="ph-s">Problemas comunes y sus soluciones</div>
+          <div data-lang="es" class="ph-t">Troubleshooting en Windows 11</div>
+          <div data-lang="en" class="ph-t">Troubleshooting on Windows 11</div>
+          <div data-lang="es" class="ph-s">Problemas comunes y sus soluciones</div>
+          <div data-lang="en" class="ph-s">Common problems and their solutions</div>
         </div>
       </div>
 
-      <table>
-        <tr>
-          <th>Problema</th>
-          <th>Causa</th>
-          <th>Solución</th>
-        </tr>
-        <tr>
-          <td><strong><code>kimi</code> no se reconoce como comando</strong></td>
-          <td>El directorio bin de uv no está en PATH</td>
-          <td>Ejecutar <code>uv tool bin-path</code> para ver la ruta, luego agregarla al PATH de usuario en Variables
-            de Entorno.</td>
-        </tr>
-        <tr>
-          <td><strong><code>gentle-ai</code> no se reconoce</strong></td>
-          <td>Binario no en PATH</td>
-          <td>Con PowerShell installer: cerrar y reabrir PowerShell. Con Scoop: <code>scoop reset gentle-ai</code>. Con
-            go install: verificar que <code>C:\Users\TuUsuario\go\bin</code> está en PATH.</td>
-        </tr>
-        <tr>
-          <td><strong>gentle-ai install no detecta kimi</strong></td>
-          <td><code>~/.kimi</code> no existe o <code>kimi</code> no está en PATH</td>
-          <td>Completar primero la instalación de Kimi Code CLI y ejecutar <code>/login</code>. El directorio
-            <code>~/.kimi</code> se crea al primer login.</td>
-        </tr>
-        <tr>
-          <td><strong>/login no abre el browser</strong></td>
-          <td>Firewall o configuración del browser predeterminado</td>
-          <td>Copiar la URL que aparece en el terminal y pegarla manualmente en el browser. La auth se completa igual.
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Error de Python version</strong></td>
-          <td>uv no encontró Python 3.12+</td>
-          <td>Ejecutar <code>uv python install 3.13</code> para que uv descargue Python por su cuenta. No requiere
-            instalación manual.</td>
-        </tr>
-        <tr>
-          <td><strong>Rate limit en ventana de 5 horas</strong></td>
-          <td>Demasiados requests en poco tiempo</td>
-          <td>Esperar que se recupere la ventana. Usar <code>/compact</code> y <code>/sessions</code> para optimizar el
-            uso de requests. Engram reduce requests repetidos al recordar contexto.</td>
-        </tr>
-        <tr>
-          <td><strong>Engram no recuerda el proyecto</strong></td>
-          <td>El directorio no tiene git init</td>
-          <td><code>git init</code> → <code>git add .</code> → <code>git commit -m "init"</code> → reabrir Kimi con el
-            agente y ejecutar <code>/sdd-init</code></td>
-        </tr>
-        <tr>
-          <td><strong>Context7 no responde</strong></td>
-          <td>MCP server no configurado en kimi</td>
-          <td><code>gentle-ai install --agent kimi --component context7</code> o agregar manualmente al
-            <code>~/.kimi/mcp.json</code>.</td>
-        </tr>
-        <tr>
-          <td><strong>GGA no hace review al commitear</strong></td>
-          <td>Git hook no instalado en el proyecto actual</td>
-          <td><code>gentle-ai install --agent kimi --component gga</code> ejecutado desde la raíz del proyecto.</td>
-        </tr>
-        <tr>
-          <td><strong>El agente gentleman.yaml no carga</strong></td>
-          <td>Ruta con espacios o carácter de escape en Windows</td>
-          <td>Usar comillas: <code>kimi --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</code></td>
-        </tr>
-        <tr>
-          <td><strong>Error de ejecución de scripts de PowerShell</strong></td>
-          <td>Política de ejecución restrictiva</td>
-          <td><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></td>
-        </tr>
-      </table>
+      <div data-lang="es">
+        <table>
+          <tr>
+            <th>Problema</th>
+            <th>Causa</th>
+            <th>Solución</th>
+          </tr>
+          <tr>
+            <td><strong><code>kimi</code> no se reconoce como comando</strong></td>
+            <td>El directorio bin de uv no está en PATH</td>
+            <td>Ejecutar <code>uv tool bin-path</code> para ver la ruta, luego agregarla al PATH de usuario en Variables
+              de Entorno.</td>
+          </tr>
+          <tr>
+            <td><strong><code>gentle-ai</code> no se reconoce</strong></td>
+            <td>Binario no en PATH</td>
+            <td>Con PowerShell installer: cerrar y reabrir PowerShell. Con Scoop: <code>scoop reset gentle-ai</code>. Con
+              go install: verificar que <code>C:\Users\TuUsuario\go\bin</code> está en PATH.</td>
+          </tr>
+          <tr>
+            <td><strong>gentle-ai install no detecta kimi</strong></td>
+            <td><code>~/.kimi</code> no existe o <code>kimi</code> no está en PATH</td>
+            <td>Completar primero la instalación de Kimi Code CLI y ejecutar <code>/login</code>. El directorio
+              <code>~/.kimi</code> se crea al primer login.</td>
+          </tr>
+          <tr>
+            <td><strong>/login no abre el browser</strong></td>
+            <td>Firewall o configuración del browser predeterminado</td>
+            <td>Copiar la URL que aparece en el terminal y pegarla manualmente en el browser. La auth se completa igual.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Error de Python version</strong></td>
+            <td>uv no encontró Python 3.12+</td>
+            <td>Ejecutar <code>uv python install 3.13</code> para que uv descargue Python por su cuenta. No requiere
+              instalación manual.</td>
+          </tr>
+          <tr>
+            <td><strong>Rate limit en ventana de 5 horas</strong></td>
+            <td>Demasiados requests en poco tiempo</td>
+            <td>Esperar que se recupere la ventana. Usar <code>/compact</code> y <code>/sessions</code> para optimizar el
+              uso de requests. Engram reduce requests repetidos al recordar contexto.</td>
+          </tr>
+          <tr>
+            <td><strong>Engram no recuerda el proyecto</strong></td>
+            <td>El directorio no tiene git init</td>
+            <td><code>git init</code> → <code>git add .</code> → <code>git commit -m "init"</code> → reabrir Kimi con el
+              agente y ejecutar <code>/sdd-init</code></td>
+          </tr>
+          <tr>
+            <td><strong>Context7 no responde</strong></td>
+            <td>MCP server no configurado en kimi</td>
+            <td><code>gentle-ai install --agent kimi --component context7</code> o agregar manualmente al
+              <code>~/.kimi/mcp.json</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>GGA no hace review al commitear</strong></td>
+            <td>Git hook no instalado en el proyecto actual</td>
+            <td><code>gentle-ai install --agent kimi --component gga</code> ejecutado desde la raíz del proyecto.</td>
+          </tr>
+          <tr>
+            <td><strong>El agente gentleman.yaml no carga</strong></td>
+            <td>Ruta con espacios o carácter de escape en Windows</td>
+            <td>Usar comillas: <code>kimi --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</code></td>
+          </tr>
+          <tr>
+            <td><strong>Error de ejecución de scripts de PowerShell</strong></td>
+            <td>Política de ejecución restrictiva</td>
+            <td><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></td>
+          </tr>
+        </table>
+      </div>
+      <div data-lang="en">
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td><strong><code>kimi</code> is not recognized as a command</strong></td>
+            <td>The uv bin directory is not in PATH</td>
+            <td>Run <code>uv tool bin-path</code> to see the path, then add it to the user PATH in Environment
+              Variables.</td>
+          </tr>
+          <tr>
+            <td><strong><code>gentle-ai</code> is not recognized</strong></td>
+            <td>Binary not in PATH</td>
+            <td>With PowerShell installer: close and reopen PowerShell. With Scoop: <code>scoop reset gentle-ai</code>. With
+              go install: verify that <code>C:\Users\YourUser\go\bin</code> is in PATH.</td>
+          </tr>
+          <tr>
+            <td><strong>gentle-ai install doesn't detect kimi</strong></td>
+            <td><code>~/.kimi</code> doesn't exist or <code>kimi</code> is not in PATH</td>
+            <td>Complete Kimi Code CLI installation first and run <code>/login</code>. The
+              <code>~/.kimi</code> directory is created on first login.</td>
+          </tr>
+          <tr>
+            <td><strong>/login doesn't open the browser</strong></td>
+            <td>Firewall or default browser configuration</td>
+            <td>Copy the URL that appears in the terminal and paste it manually into the browser. Auth completes anyway.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Python version error</strong></td>
+            <td>uv didn't find Python 3.12+</td>
+            <td>Run <code>uv python install 3.13</code> so uv downloads Python on its own. No manual installation required.</td>
+          </tr>
+          <tr>
+            <td><strong>Rate limit in 5-hour window</strong></td>
+            <td>Too many requests in a short time</td>
+            <td>Wait for the window to recover. Use <code>/compact</code> and <code>/sessions</code> to optimize
+              request usage. Engram reduces repeated requests by remembering context.</td>
+          </tr>
+          <tr>
+            <td><strong>Engram doesn't remember the project</strong></td>
+            <td>The directory doesn't have git init</td>
+            <td><code>git init</code> → <code>git add .</code> → <code>git commit -m "init"</code> → reopen Kimi with the
+              agent and run <code>/sdd-init</code></td>
+          </tr>
+          <tr>
+            <td><strong>Context7 doesn't respond</strong></td>
+            <td>MCP server not configured in kimi</td>
+            <td><code>gentle-ai install --agent kimi --component context7</code> or add manually to
+              <code>~/.kimi/mcp.json</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>GGA doesn't review on commit</strong></td>
+            <td>Git hook not installed in the current project</td>
+            <td><code>gentle-ai install --agent kimi --component gga</code> run from the project root.</td>
+          </tr>
+          <tr>
+            <td><strong>The gentleman.yaml agent doesn't load</strong></td>
+            <td>Path with spaces or escape character on Windows</td>
+            <td>Use quotes: <code>kimi --agent-file "$env:USERPROFILE\.kimi\agents\gentleman.yaml"</code></td>
+          </tr>
+          <tr>
+            <td><strong>PowerShell script execution error</strong></td>
+            <td>Restrictive execution policy</td>
+            <td><code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <!-- ═══ COMPARACION CON SOLO KIMI ═══ -->
     <div class="ph">
       <div class="div"></div><br><br>
-      <div
+      <div data-lang="es"
         style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;">
         // cuándo usar cada modalidad</div>
+      <div data-lang="en"
+        style="font-family:'JetBrains Mono',monospace;font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;">
+        // when to use each modality</div>
 
       <div class="cmp">
         <div class="cmp-h km">⬡ Kimi Code solo</div>
         <div class="cmp-h ga">◆ Kimi Code + Gentle-AI</div>
         <div class="cmp-b">
-          <p style="margin-bottom:10px;font-size:.9em;color:var(--mut2);">
-            <span class="chip cb2">✅</span>&nbsp; Setup en 2 pasos (install + /login)<br><br>
-            <span class="chip cb2">✅</span>&nbsp; 256K contexto listo para usar<br><br>
-            <span class="chip cb2">✅</span>&nbsp; Modo thinking con Tab<br><br>
-            <span class="chip cb2">✅</span>&nbsp; Web UI incluida</span><br><br>
+          <div data-lang="es">
+            <p style="margin-bottom:10px;font-size:.9em;color:var(--mut2);">
+              <span class="chip cb2">✅</span>&nbsp; Setup en 2 pasos (install + /login)<br><br>
+              <span class="chip cb2">✅</span>&nbsp; 256K contexto listo para usar<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Modo thinking con Tab<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Web UI incluida</span><br><br>
               <span class="chip cb2">✅</span>&nbsp; Soporte multimodal (imágenes, video)<br><br>
               <span class="chip cb3">❌</span>&nbsp; Sin memoria entre sesiones<br><br>
               <span class="chip cb3">❌</span>&nbsp; Sin workflow estructurado<br><br>
               <span class="chip cb4">→</span>&nbsp; <strong style="color:var(--text)">Ideal para tareas rápidas y
                 one-off</strong>
-          </p>
+            </p>
+          </div>
+          <div data-lang="en">
+            <p style="margin-bottom:10px;font-size:.9em;color:var(--mut2);">
+              <span class="chip cb2">✅</span>&nbsp; 2-step setup (install + /login)<br><br>
+              <span class="chip cb2">✅</span>&nbsp; 256K context ready to use<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Thinking mode with Tab<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Web UI included</span><br><br>
+              <span class="chip cb2">✅</span>&nbsp; Multimodal support (images, video)<br><br>
+              <span class="chip cb3">❌</span>&nbsp; No memory between sessions<br><br>
+              <span class="chip cb3">❌</span>&nbsp; No structured workflow<br><br>
+              <span class="chip cb4">→</span>&nbsp; <strong style="color:var(--text)">Ideal for quick and
+                one-off tasks</strong>
+            </p>
+          </div>
         </div>
         <div class="cmp-b">
-          <p style="margin-bottom:10px;font-size:.9em;color:var(--mut2);">
-            <span class="chip cb4">⚠</span>&nbsp; Setup en 4 pasos (install + login + gentle-ai + init)<br><br>
-            <span class="chip cb2">✅</span>&nbsp; 256K contexto + Engram para persistencia ilimitada<br><br>
-            <span class="chip cb2">✅</span>&nbsp; SDD workflow de 9 fases<br><br>
-            <span class="chip cb2">✅</span>&nbsp; Context7 · docs actualizadas en tiempo real<br><br>
-            <span class="chip cb2">✅</span>&nbsp; GGA · code review automático<br><br>
-            <span class="chip cb2">✅</span>&nbsp; Engram · nunca perdés contexto entre sesiones<br><br>
-            <span class="chip cb4">→</span>&nbsp; <strong style="color:var(--text)">Recomendado para proyectos
-              serios</strong>
-          </p>
+          <div data-lang="es">
+            <p style="margin-bottom:10px;font-size:.9em;color:var(--mut2);">
+              <span class="chip cb4">⚠</span>&nbsp; Setup en 4 pasos (install + login + gentle-ai + init)<br><br>
+              <span class="chip cb2">✅</span>&nbsp; 256K contexto + Engram para persistencia ilimitada<br><br>
+              <span class="chip cb2">✅</span>&nbsp; SDD workflow de 9 fases<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Context7 · docs actualizadas en tiempo real<br><br>
+              <span class="chip cb2">✅</span>&nbsp; GGA · code review automático<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Engram · nunca perdés contexto entre sesiones<br><br>
+              <span class="chip cb4">→</span>&nbsp; <strong style="color:var(--text)">Recomendado para proyectos
+                serios</strong>
+            </p>
+          </div>
+          <div data-lang="en">
+            <p style="margin-bottom:10px;font-size:.9em;color:var(--mut2);">
+              <span class="chip cb4">⚠</span>&nbsp; 4-step setup (install + login + gentle-ai + init)<br><br>
+              <span class="chip cb2">✅</span>&nbsp; 256K context + Engram for unlimited persistence<br><br>
+              <span class="chip cb2">✅</span>&nbsp; 9-phase SDD workflow<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Context7 · real-time updated docs<br><br>
+              <span class="chip cb2">✅</span>&nbsp; GGA · automatic code review<br><br>
+              <span class="chip cb2">✅</span>&nbsp; Engram · never lose context between sessions<br><br>
+              <span class="chip cb4">→</span>&nbsp; <strong style="color:var(--text)">Recommended for serious
+                projects</strong>
+            </p>
+          </div>
         </div>
       </div>
 
       <div class="alert ai">
         <div>💡</div>
         <div class="ab">
-          <div class="t">Conclusión clara</div>
-          <p>Para proyectos de programación profesional donde trabajás en el mismo codebase durante días o semanas:
-            <strong>Kimi Code + gentle-ai es la combinación correcta</strong>. El 256K de contexto de Kimi maneja
-            proyectos grandes, y Engram garantiza que ese contexto persiste entre sesiones sin que tengas que repetir
-            nada.</p>
+          <div data-lang="es" class="t">Conclusión clara</div>
+          <div data-lang="en" class="t">Clear conclusion</div>
+          <div data-lang="es">
+            <p>Para proyectos de programación profesional donde trabajás en el mismo codebase durante días o semanas:
+              <strong>Kimi Code + gentle-ai es la combinación correcta</strong>. El 256K de contexto de Kimi maneja
+              proyectos grandes, y Engram garantiza que ese contexto persiste entre sesiones sin que tengas que repetir
+              nada.</p>
+          </div>
+          <div data-lang="en">
+            <p>For professional programming projects where you work on the same codebase for days or weeks:
+              <strong>Kimi Code + gentle-ai is the right combination</strong>. Kimi's 256K context handles
+              large projects, and Engram ensures that context persists between sessions without you having to repeat
+              anything.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1763,24 +2674,72 @@ de Server Components y aplicalas correctamente en el proyecto.
   </div><!-- /wrap -->
 
   <footer>
-    <div class="ft-big">Kimi Code × Gentle-AI</div>
-    <p>Windows 11 nativo · K2.6 · 256K contexto · Ecosistema Gentleman completo</p>
-    <br>
-    <p style="color:var(--muted);">
-      <a href="https://www.kimi.com/code/docs/en/"
-        style="color:var(--kimi);text-decoration:none;">kimi.com/code/docs</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/MoonshotAI/kimi-cli"
-        style="color:var(--kimi);text-decoration:none;">github.com/MoonshotAI/kimi-cli</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/Gentleman-Programming/gentle-ai"
-        style="color:var(--acc2);text-decoration:none;">github.com/Gentleman-Programming/gentle-ai</a>
-    </p>
-    <br>
-    <p style="color:var(--muted);font-size:.82em;">Guía actualizada · Abril 2026 · Kimi CLI 1.39.0 · gentle-ai v1.23.0 ·
-      Kimi K2.6</p>
+    <div data-lang="es">
+      <div class="ft-big">Kimi Code × Gentle-AI</div>
+      <p>Windows 11 nativo · K2.6 · 256K contexto · Ecosistema Gentleman completo</p>
+      <br>
+      <p style="color:var(--muted);">
+        <a href="https://www.kimi.com/code/docs/en/"
+          style="color:var(--kimi);text-decoration:none;">kimi.com/code/docs</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/MoonshotAI/kimi-cli"
+          style="color:var(--kimi);text-decoration:none;">github.com/MoonshotAI/kimi-cli</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/Gentleman-Programming/gentle-ai"
+          style="color:var(--acc2);text-decoration:none;">github.com/Gentleman-Programming/gentle-ai</a>
+      </p>
+      <br>
+      <p style="color:var(--muted);font-size:.82em;">Guía actualizada · Abril 2026 · Kimi CLI 1.39.0 · gentle-ai v1.23.0 ·
+        Kimi K2.6</p>
+    </div>
+    <div data-lang="en">
+      <div class="ft-big">Kimi Code × Gentle-AI</div>
+      <p>Native Windows 11 · K2.6 · 256K context · Complete Gentleman Ecosystem</p>
+      <br>
+      <p style="color:var(--muted);">
+        <a href="https://www.kimi.com/code/docs/en/"
+          style="color:var(--kimi);text-decoration:none;">kimi.com/code/docs</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/MoonshotAI/kimi-cli"
+          style="color:var(--kimi);text-decoration:none;">github.com/MoonshotAI/kimi-cli</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/Gentleman-Programming/gentle-ai"
+          style="color:var(--acc2);text-decoration:none;">github.com/Gentleman-Programming/gentle-ai</a>
+      </p>
+      <br>
+      <p style="color:var(--muted);font-size:.82em;">Updated guide · April 2026 · Kimi CLI 1.39.0 · gentle-ai v1.23.0 ·
+        Kimi K2.6</p>
+    </div>
   </footer>
 
+
+<script>
+(function() {
+  const html = document.documentElement;
+  const btnEs = document.getElementById('btn-es');
+  const btnEn = document.getElementById('btn-en');
+  const titleEl = document.querySelector('title');
+  const originalTitle = titleEl ? titleEl.textContent : '';
+
+  function setLang(lang) {
+    html.setAttribute('lang', lang);
+    localStorage.setItem('guia-lang', lang);
+    if (lang === 'es') {
+      btnEs.classList.add('active');
+      btnEn.classList.remove('active');
+    } else {
+      btnEn.classList.add('active');
+      btnEs.classList.remove('active');
+    }
+  }
+
+  const saved = localStorage.getItem('guia-lang');
+  if (saved === 'en') setLang('en');
+  else setLang('es');
+
+  window.setLang = setLang;
+})();
+</script>
 </body>
 
 </html>
